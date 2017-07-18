@@ -1,6 +1,8 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,18 +45,18 @@ public class CanvasTest {
 	public void testGetPixelInBounds() {
 		int pixel = 0x0;
 		testCanvas.setPixel(xIn, yIn, pixel);
-		assert(testCanvas.getPixel(xIn, yIn) == pixel);
+		assertEquals(testCanvas.getPixel(xIn, yIn), pixel);
 	}
 	
 	@Test
 	public void testGetPixelOutOfBounds(){
 		int nothingReturnedValue = -1;
-		assert(testCanvas.getPixel(xOut, yOut) == nothingReturnedValue);
+		assertTrue(testCanvas.getPixel(xOut, yOut) == nothingReturnedValue);
 	}
 	
 	@Test
 	public void testSetPixelInBounds() {
-		assert(testCanvas.setPixel(xIn, yIn, testPixel));
+		assertTrue(testCanvas.setPixel(xIn, yIn, testPixel));
 	}
 	
 	@Test
