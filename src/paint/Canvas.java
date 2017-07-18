@@ -23,7 +23,24 @@ public class Canvas {
 		pixmap = new int[size][size];
 	}
 	
-	public void setPixel(int x, int y, int pixelData){
-		pixmap[x][y] = pixelData;
+	public boolean setPixel(int x, int y, int pixelData){
+		if(inBounds(x, y)){
+			pixmap[x][y] = pixelData;
+			return true;
+		}
+		
+		else return false;
+	}
+	
+	public int getPixel(int x, int y){
+		if(inBounds(x, y)){
+			return pixmap[x][y];
+		}
+		
+		else return -1;
+	}
+	
+	private boolean inBounds(int x, int y){
+		return x >= 0 && x < this.WIDTH && y >= 0 && y < this.HEIGHT;
 	}
 }
