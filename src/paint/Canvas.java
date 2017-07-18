@@ -9,7 +9,7 @@ package paint;
 public class Canvas {
 	public final int WIDTH;
 	public final int HEIGHT;
-	public final int[][] pixmap;
+	private final int[][] pixmap;
 	
 	public Canvas(int width, int height){
 		this.WIDTH = width;
@@ -38,6 +38,10 @@ public class Canvas {
 		}
 		
 		else return -1;
+	}
+	
+	public int[][] getPixels(){
+		return pixmap;
 	}
 	
 	private boolean inBounds(int x, int y){

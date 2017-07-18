@@ -1,10 +1,19 @@
 package paint;
+
 public class PixmapConverter {
-	public static boolean toBitmap(Canvas c){
-		return false;
+	
+	int[][] pixmap;
+	
+	public PixmapConverter(Canvas c){
+		this.pixmap = c.getPixels();
 	}
 	
-	public static boolean toBitmap(int[][] pixmap){
+	public PixmapConverter(int[][] pixmap){
+		this.pixmap = pixmap;
+	}
+	
+	public boolean toBitmap32(){
+		
 		return false;
 	}
 }
