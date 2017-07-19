@@ -44,6 +44,11 @@ public class Canvas {
 		return pixmap;
 	}
 	
+	public boolean toBitmap(String outputDir){
+		
+		return true;
+	}
+	
 	private boolean inBounds(int x, int y){
 		return x >= 0 && x < this.WIDTH && y >= 0 && y < this.HEIGHT;
 	}
