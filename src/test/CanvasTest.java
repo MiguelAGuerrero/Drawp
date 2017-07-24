@@ -63,4 +63,21 @@ public class CanvasTest {
 	public void testSetPixelOutOfBounds(){
 		assertFalse(testCanvas.setPixel(xOut, yOut, testPixel));
 	}
+	
+	@Test
+	public void testFill(){
+		testCanvas.fill(testPixel);
+		for(int[] row: testCanvas.getPixels())
+		{
+			for(int pixel: row)
+			{
+				if(pixel != testPixel)
+				{
+					assertTrue(false);
+				}
+			}
+		}
+		
+		assertTrue(true);
+	}
 }

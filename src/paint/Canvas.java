@@ -52,4 +52,13 @@ public class Canvas {
 	private boolean inBounds(int x, int y){
 		return x >= 0 && x < this.WIDTH && y >= 0 && y < this.HEIGHT;
 	}
+	
+	public void fill(int pixel)
+	{
+		for(int i = 0; i < pixmap.length; i++){
+			for(int j = 0; j < pixmap[0].length; j++){
+				pixmap[i][j] = pixel;
+			}
+		}
+	}
 }
