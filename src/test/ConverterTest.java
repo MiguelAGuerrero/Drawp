@@ -24,7 +24,7 @@ public class ConverterTest
 	@Test
 	public void testCreateFile()
 	{
-		testCanvas.fill(0xFF);
+		testCanvas.fill(0x0000FF);
 		String output = "out.txt";
 		assertTrue(converter.convert(output));
 	}
