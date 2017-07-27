@@ -1,6 +1,7 @@
 package paint;
 import static java.nio.file.StandardOpenOption.*;
 import java.nio.file.*;
+import java.util.Arrays;
 import java.io.*;
 public class Converter 
 {
@@ -14,15 +15,20 @@ public class Converter
 		try(OutputStream out = new BufferedOutputStream(
 				Files.newOutputStream(pathOutput, CREATE, TRUNCATE_EXISTING)))
 		{
+			int padding = canvas.WIDTH % 4;
 			writeHeader(out);
-			for(int pixel: canvas)
+			for(int[] row: canvas.getPixels())
 			{
-				int r = pixel >>> 16;
-				int g = pixel >>> 8;
-				out.write(r);
-				out.write(g);
-				out.write(pixel);
-				out.write(0);
+				for(int pixel: row)
+				{
+					int r = pixel >>> 16; //Red
+					int g = pixel >>> 8; //Green
+					out.write(r);
+					out.write(g);
+					out.write(pixel);    //Blue
+				}
+				
+				for(int i = 0; i < padding; i++) out.write(0);
 			}
 		}
 
@@ -39,12 +45,13 @@ public class Converter
 	private byte[] intToByteArray(int val)
 	{
 		byte[] byteArr = {(byte) val, (byte) (val >>> 8), (byte) (val >>> 16), (byte) (val >>> 24)};
+		System.out.println(Arrays.toString(byteArr));
 		return byteArr;
 	}
 	
 	private void writeHeader(OutputStream out) throws IOException
 	{
-		byte[] nothing = {0, 0, 0, 0};
+		byte[] emptyValues = {0, 0, 0, 0};
 		byte[] fileHeader = {0x42, 0x4D};
 		
 		int bytesPerPixel = 4;
@@ -52,19 +59,19 @@ public class Converter
 		int rawData = canvas.WIDTH * canvas.HEIGHT * bytesPerPixel;
 		int fileSize = rawData + headerOverhead;
 		byte[] bmpFileSize = intToByteArray(fileSize);
-		byte[] reservedValues = nothing;
+		byte[] reservedValues = emptyValues;
 		byte[] pixelArrayStartingAddress = {54, 0, 0, 0};
 		byte[] sizeOfHeader = {40, 0, 0, 0};
 		byte[] bitmapWidth = intToByteArray(canvas.WIDTH);
 		byte[] bitmapHeight = intToByteArray(canvas.HEIGHT);
 		byte[] numColorPlanes = {1, 0};
 		byte[] bitsPerPixel = {24, 0};
-		byte[] compressionMethod = nothing;
+		byte[] compressionMethod = emptyValues;
 		byte[] imageSize = intToByteArray(rawData);
 		byte[] horizontalResolution = {35, 28, 0, 0};
 		byte[] verticalResolution = horizontalResolution;
-		byte[] colorsInPalette = nothing;
-		byte[] importantColors = nothing;
+		byte[] colorsInPalette = emptyValues;
+		byte[] importantColors = emptyValues;
 		byte[][] headerFields = 
 			{
 					fileHeader,

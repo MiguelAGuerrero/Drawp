@@ -24,7 +24,7 @@ public class ConverterTest
 	@Test
 	public void testCreateFile()
 	{
-		testCanvas.fill(0x0000FF);
+		testCanvas.fill(0xFFFFFF);
 		String output = "out.bmp";
 		assertTrue(converter.convert(output));
 	}
