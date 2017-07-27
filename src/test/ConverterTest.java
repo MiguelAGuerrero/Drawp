@@ -8,7 +8,8 @@ import org.junit.Test;
 import paint.Canvas;
 import paint.Converter;
 
-public class ConverterTest {
+public class ConverterTest
+{
 	Canvas testCanvas;
 	Converter converter;
 	
@@ -25,6 +26,6 @@ public class ConverterTest {
 	{
 		testCanvas.fill(0xFF);
 		String output = "out.txt";
-		converter.convert(output);
+		assertTrue(converter.convert(output));
 	}
 }
