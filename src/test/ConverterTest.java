@@ -16,7 +16,7 @@ public class ConverterTest
 	@Before
 	public void init()
 	{
-		int size = 5;
+		int size = 1000;
 		testCanvas = new Canvas(size);
 		converter = new Converter(testCanvas);
 	}
@@ -25,7 +25,7 @@ public class ConverterTest
 	public void testCreateFile()
 	{
 		testCanvas.fill(0x0000FF);
-		String output = "out.txt";
+		String output = "out.bmp";
 		assertTrue(converter.convert(output));
 	}
 }

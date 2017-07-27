@@ -14,6 +14,7 @@ public class Converter
 		try(OutputStream out = new BufferedOutputStream(
 				Files.newOutputStream(pathOutput, CREATE, TRUNCATE_EXISTING)))
 		{
+			writeHeader(out);
 			for(int pixel: canvas)
 			{
 				int r = pixel >>> 16;
@@ -21,6 +22,7 @@ public class Converter
 				out.write(r);
 				out.write(g);
 				out.write(pixel);
+				out.write(0);
 			}
 		}
 
@@ -34,27 +36,38 @@ public class Converter
 		return true;
 	}
 
+	private byte[] intToByteArray(int val)
+	{
+		byte[] byteArr = {(byte) val, (byte) (val >>> 8), (byte) (val >>> 16), (byte) (val >>> 24)};
+		return byteArr;
+	}
+	
 	private void writeHeader(OutputStream out) throws IOException
 	{
 		byte[] nothing = {0, 0, 0, 0};
-		byte[] headerField = {0x42, 0x4D};
-		byte[] bmpFileSize = nothing;
+		byte[] fileHeader = {0x42, 0x4D};
+		
+		int bytesPerPixel = 4;
+		int headerOverhead = 54;
+		int rawData = canvas.WIDTH * canvas.HEIGHT * bytesPerPixel;
+		int fileSize = rawData + headerOverhead;
+		byte[] bmpFileSize = intToByteArray(fileSize);
 		byte[] reservedValues = nothing;
-		byte[] pixelArrayStartingAddress = {0, 0, 0, 54};
-		byte[] sizeOfHeader = {0, 0, 0, 40};
-		byte[] bitmapWidth = {};
-		byte[] bitmapHeight = {};
-		byte[] numColorPlanes = {0, 1};
-		byte[] bitsPerPixel = {0, 24};
+		byte[] pixelArrayStartingAddress = {54, 0, 0, 0};
+		byte[] sizeOfHeader = {40, 0, 0, 0};
+		byte[] bitmapWidth = intToByteArray(canvas.WIDTH);
+		byte[] bitmapHeight = intToByteArray(canvas.HEIGHT);
+		byte[] numColorPlanes = {1, 0};
+		byte[] bitsPerPixel = {24, 0};
 		byte[] compressionMethod = nothing;
-		byte[] imageSize = {};
-		byte[] horizontalResolution = nothing;
+		byte[] imageSize = intToByteArray(rawData);
+		byte[] horizontalResolution = {35, 28, 0, 0};
 		byte[] verticalResolution = horizontalResolution;
 		byte[] colorsInPalette = nothing;
 		byte[] importantColors = nothing;
 		byte[][] headerFields = 
 			{
-					headerField,
+					fileHeader,
 					bmpFileSize,
 					reservedValues,
 					pixelArrayStartingAddress,
@@ -70,7 +83,7 @@ public class Converter
 					colorsInPalette,
 					importantColors
 			};
-
+		
 		for(byte[] fields: headerFields)
 		{
 			out.write(fields);
