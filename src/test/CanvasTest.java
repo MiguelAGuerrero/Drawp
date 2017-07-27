@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
 
@@ -67,17 +68,10 @@ public class CanvasTest {
 	@Test
 	public void testFill(){
 		testCanvas.fill(testPixel);
-		for(int[] row: testCanvas.getPixels())
-		{
-			for(int pixel: row)
-			{
-				if(pixel != testPixel)
-				{
-					assertTrue(false);
-				}
+		for(int pixel: testCanvas){
+			if(pixel != testPixel){
+				fail();
 			}
 		}
-		
-		assertTrue(true);
 	}
 }

@@ -6,22 +6,25 @@ import org.junit.Before;
 import org.junit.Test;
 
 import paint.Canvas;
-import paint.Bitmap;
+import paint.Converter;
 
 public class ConverterTest {
 	Canvas testCanvas;
-	Bitmap converter;
+	Converter converter;
 	
 	@Before
-	public void init(){
+	public void init()
+	{
 		int size = 5;
 		testCanvas = new Canvas(size);
-		converter = new Bitmap(testCanvas);
+		converter = new Converter(testCanvas);
 	}
 	
 	@Test
-	public void testCreateFile() {
-		converter.convert("out.txt");
+	public void testCreateFile()
+	{
+		testCanvas.fill(0xFF);
+		String output = "out.txt";
+		converter.convert(output);
 	}
-
 }
