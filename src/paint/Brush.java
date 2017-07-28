@@ -1,8 +1,7 @@
 package paint;
 
 public class Brush implements Applicator
-{
-	private static BrushShape DEFAULT_SHAPE = new BrushShape(1);
+{	
 	protected int x;
 	protected int y;
 	protected int color = 0x0;
@@ -12,7 +11,7 @@ public class Brush implements Applicator
 	{
 		this.x = 0;
 		this.y = 0;
-		this.shape = DEFAULT_SHAPE;
+		this.shape = BrushShape.pixelPointPen();
 	}
 
 	@Override
@@ -35,5 +34,10 @@ public class Brush implements Applicator
 	public int getColor()
 	{
 		return color;
+	}
+	
+	public void setShape(BrushShape bs)
+	{
+		this.shape = bs;
 	}
 }

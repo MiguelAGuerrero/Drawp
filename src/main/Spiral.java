@@ -17,12 +17,13 @@ public class Spiral implements Runnable
 	
 	public void start()
 	{
-		int iterations = 1000;
-		for(int i = 0; i < 10; i++)
-		{
-			makeSpiral(iterations, 1, 0.05 + i * 0.05, 1);
-		}
+		int iterations = 10000;
+		double deltaAngle = 0.10;
+		double deltaRadius = 0.05;
 		
+		makeSpiral(iterations, deltaAngle, deltaRadius, 1);
+		makeSpiral(iterations, deltaAngle, deltaRadius, -1);
+
 		Converter co = new Converter(canvas);
 		co.convert("spiral.bmp");
 	}
@@ -45,7 +46,6 @@ public class Spiral implements Runnable
 			radius += deltaRadius;
 			brush.apply(canvas);
 			brush.moveTo(x, y);
-			brush.setColor(brush.getColor() + 10);
 			iterations--;
 		}
 	}
