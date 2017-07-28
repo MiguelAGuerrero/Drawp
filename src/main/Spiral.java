@@ -1,6 +1,5 @@
 package main;
 
-import paint.Applicator;
 import paint.Brush;
 import paint.Canvas;
 import paint.Converter;
@@ -18,15 +17,17 @@ public class Spiral implements Runnable
 	
 	public void start()
 	{
-		int iterations = 10000;
-		spiral(iterations, 1, 0.05, 1);
-		spiral(iterations, 1, 0.05, -1);
+		int iterations = 1000;
+		for(int i = 0; i < 10; i++)
+		{
+			makeSpiral(iterations, 1, 0.05 + i * 0.05, 1);
+		}
 		
 		Converter co = new Converter(canvas);
 		co.convert("spiral.bmp");
 	}
 	
-	private void spiral(double iterations, double da, double dr, int dir)
+	private void makeSpiral(double iterations, double deltaAngle, double deltaRadius, int direction)
 	{
 		int x = 0;
 		int y = 0;
@@ -38,12 +39,13 @@ public class Spiral implements Runnable
 		while(iterations > 0)
 		{
 			double rad = Math.toRadians(ang);
-			x = (int) (cx + dir * radius * Math.cos(rad));
-			y = (int) (cy + dir * radius * Math.sin(rad));
-			ang += da;
-			radius += dr;
+			x = (int) (cx + direction * radius * Math.cos(rad));
+			y = (int) (cy + direction * radius * Math.sin(rad));
+			ang += deltaAngle;
+			radius += deltaRadius;
 			brush.apply(canvas);
 			brush.moveTo(x, y);
+			brush.setColor(brush.getColor() + 10);
 			iterations--;
 		}
 	}
