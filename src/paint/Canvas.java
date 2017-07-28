@@ -38,7 +38,7 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 	private void initPixmap()
 	{
 		pixmap = new int[WIDTH][HEIGHT];
-		fill(0);
+		fill(0xFFFFFF);
 	}
 	
 	/**
