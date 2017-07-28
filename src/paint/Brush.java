@@ -2,34 +2,23 @@ package paint;
 
 public class Brush implements Applicator
 {
+	private static BrushShape DEFAULT_SHAPE = new BrushShape(1);
 	protected int x;
 	protected int y;
 	protected int color = 0x0;
-	protected boolean[][] shape;
+	protected BrushShape shape;
 	
 	public Brush()
 	{
 		this.x = 0;
 		this.y = 0;
-		this.shape = new boolean[1][1];
-		shape[0][0] = true;
+		this.shape = DEFAULT_SHAPE;
 	}
 
 	@Override
 	public void apply(Bitmap<Integer> b)
 	{
-		int shapeCX = shape.length / 2;
-		int shapeCY = shape[0].length / 2;
-		
-		for(int i = 0; i < shape.length; i++)
-		{
-			for(int j = 0; j < shape[i].length; j++)
-			{
-				boolean pointOfApplication = shape[i][j];
-				if(pointOfApplication)
-					b.setPixel(x + shapeCX - i, y + shapeCY - j, color);
-			}
-		}
+		this.shape.apply(this, b);
 	}
 	
 	public void moveTo(int x, int y)
@@ -46,9 +35,5 @@ public class Brush implements Applicator
 	public int getColor()
 	{
 		return color;
-	}
-
-	public void setShape(boolean[][] shape2) {
-		this.shape = shape2;
 	}
 }
