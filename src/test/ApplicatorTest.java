@@ -15,7 +15,7 @@ import paint.PointBrush;
 public class ApplicatorTest 
 {
 	Canvas testCanvas;
-	Applicator<Integer> testBrush;
+	Applicator testBrush;
 
 	@Before
 	public void initValues()

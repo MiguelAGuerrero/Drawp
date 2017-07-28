@@ -1,6 +1,6 @@
 package paint;
 
-public interface Applicator<T>
+public interface Applicator
 {
-	void apply(Bitmap<T> b);
+	void apply(Bitmap<Integer> b);
 }
