@@ -12,9 +12,10 @@ public class PixelTest
 	@Test
 	public void testPixelToInt() 
 	{
-		int pixelData = 0x00FF3A9C;
+		int pixelData = 0xFF00FF;
 		Pixel testPixel = new Pixel(pixelData);
-		assertEquals(testPixel.toInt(), pixelData);		
+		int pixelToInt = testPixel.toInt();
+		assertEquals(pixelToInt, pixelData);		
 	}
 
 }

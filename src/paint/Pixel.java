@@ -39,9 +39,9 @@ public class Pixel
 	public int toInt()
 	{
 		return a << ALPHA_BITPOSITION 
-				+ r << RED_BITPOSITION 
-				+ g << GREEN_BITPOSITION 
-				+ b;
+				| r << RED_BITPOSITION 
+				| g << GREEN_BITPOSITION 
+				| b;
 	}
 	
 	public String toString()
