@@ -17,5 +17,4 @@ public class PixelTest
 		int pixelToInt = testPixel.toInt();
 		assertEquals(pixelToInt, pixelData);		
 	}
-
 }

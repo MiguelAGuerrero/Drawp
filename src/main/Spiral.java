@@ -4,21 +4,20 @@ import paint.Brush;
 import paint.Canvas;
 import paint.Converter;
 
-public class Spiral implements Runnable
+public class Spiral extends Pattern
 {
 	Canvas canvas;
 	Brush[] brushes;
 	
 	public Spiral(Canvas c, Brush... brushes)
 	{
-		this.canvas = c;
-		this.brushes = brushes;
+		super(c, brushes);
 	}
 	
-	public void start()
+	public void draw()
 	{
-		int iterations = 5000;
-		double deltaAngle = 0.10;
+		int iterations = 20000;
+		double deltaAngle = 0.1;
 		double deltaRadius = 0.05;
 		
 		for(Brush b: brushes)
@@ -50,10 +49,5 @@ public class Spiral implements Runnable
 			brush.moveTo(x, y);
 			iterations--;
 		}
-	}
-	
-	@Override
-	public void run(){
-		start();
 	}
 }

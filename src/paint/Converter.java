@@ -22,8 +22,10 @@ public class Converter
 			{
 				for(int pixel: row)
 				{
-					int r = pixel >>> 16; //Red
-					int g = pixel >>> 8; //Green
+					//int a = pixel >>> Pixel.ALPHA_BITPOSITION; //Alpha
+					int r = pixel >>> Pixel.RED_BITPOSITION; //Red
+					int g = pixel >>> Pixel.GREEN_BITPOSITION; //Green
+					//out.write(a);
 					out.write(r);
 					out.write(g);
 					out.write(pixel);    //Blue
@@ -46,7 +48,6 @@ public class Converter
 	private byte[] intToByteArray(int val)
 	{
 		byte[] byteArr = {(byte) val, (byte) (val >>> 8), (byte) (val >>> 16), (byte) (val >>> 24)};
-		System.out.println(Arrays.toString(byteArr));
 		return byteArr;
 	}
 	

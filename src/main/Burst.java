@@ -4,18 +4,14 @@ import paint.Brush;
 import paint.Canvas;
 import paint.Converter;
 
-public class Burst implements Runnable
+public class Burst extends Pattern
 {
-	Canvas canvas;
-	Brush[] brushes;
-	
 	public Burst(Canvas c, Brush... brushes)
 	{
-		this.canvas = c;
-		this.brushes = brushes;
+		super(c, brushes);
 	}
 	
-	public void start()
+	public void draw()
 	{
 		int iterations = 500;
 		
@@ -47,10 +43,5 @@ public class Burst implements Runnable
 			brush.apply(canvas);
 			brush.moveTo(brush.x() + dx,  brush.y() + dy);
 		}
-	}
-	
-	@Override
-	public void run(){
-		start();
 	}
 }
