@@ -48,8 +48,8 @@ public class BrushShape
 				int p = shape[i][j];
 				if(p > 0)
 				{
-					int x = brush.x + centerX - i;
-					int y = brush.y + centerY - j;
+					int x = (int) (brush.x + centerX - i);
+					int y = (int) (brush.y + centerY - j);
 					int maxIntensity = 255;
 					if(p == maxIntensity)
 					{

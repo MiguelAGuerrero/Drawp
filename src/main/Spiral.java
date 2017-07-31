@@ -7,28 +7,30 @@ import paint.Converter;
 public class Spiral implements Runnable
 {
 	Canvas canvas;
-	Brush brush;
+	Brush[] brushes;
 	
-	public Spiral(Canvas c, Brush brush)
+	public Spiral(Canvas c, Brush... brushes)
 	{
 		this.canvas = c;
-		this.brush = brush;
+		this.brushes = brushes;
 	}
 	
 	public void start()
 	{
-		int iterations = 10000;
+		int iterations = 5000;
 		double deltaAngle = 0.10;
 		double deltaRadius = 0.05;
 		
-		makeSpiral(iterations, deltaAngle, deltaRadius, 1);
-		makeSpiral(iterations, deltaAngle, deltaRadius, -1);
-
+		for(Brush b: brushes)
+		{
+			makeSpiral(b, iterations, deltaAngle, deltaRadius, 1);
+		}
+		
 		Converter co = new Converter(canvas);
 		co.convert("spiral.bmp");
 	}
 	
-	private void makeSpiral(double iterations, double deltaAngle, double deltaRadius, int direction)
+	private void makeSpiral(Brush brush, double iterations, double deltaAngle, double deltaRadius, int direction)
 	{
 		int x = 0;
 		int y = 0;

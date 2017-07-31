@@ -5,20 +5,23 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		Canvas c = new Canvas(1000);
-		c.fill(0x0);
+		int cSize = 1000;
 		Brush a = new Brush();
-		a.setColor(0xff00ff);
+		Brush b = new Brush();
+		a.setColor(0x0000FF);
+		b.setColor(0xFF0000);
+		int brushShapeSize = 10;
+		BrushShape bs = new BrushShape(brushShapeSize);
 		
-		int size = 10;
-		BrushShape bs = new BrushShape(size);
-		
-		for(int i = 0; i < size; i++)
+		for(int i = 0; i < brushShapeSize; i++)
 		{
-			bs.setApplicationPoint(i, i);
+			bs.setApplicationPoint(i, i / 2, i * 255 / brushShapeSize);
 		}
 		
 		a.setShape(bs);
-		new Thread(new Spiral(c, a)).start();
+		b.setShape(bs);
+		
+		//new Thread(new Spiral(new Canvas(cSize), a)).start();
+		new Thread(new Burst(new Canvas(cSize), a)).start();
 	}
 }

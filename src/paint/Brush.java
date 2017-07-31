@@ -2,10 +2,13 @@ package paint;
 
 public class Brush implements Applicator
 {	
-	protected int x;
-	protected int y;
+	protected double x;
+	protected double y;
 	protected int color = 0x0;
 	protected BrushShape shape;
+	
+	//TODO: Incorporate blending
+	public enum BlendType {NORMAL, ADD, SUBTRACT};
 	
 	public Brush()
 	{
@@ -25,6 +28,15 @@ public class Brush implements Applicator
 		this.x = x;
 		this.y = y;
 	}
+	
+	public void moveTo(double x, double y)
+	{
+		this.x = x;
+		this.y = y;
+	}
+	
+	public double x(){return this.x;}
+	public double y(){return this.y;}
 	
 	public void setColor(int color)
 	{

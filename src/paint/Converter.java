@@ -15,6 +15,7 @@ public class Converter
 		try(OutputStream out = new BufferedOutputStream(
 				Files.newOutputStream(pathOutput, CREATE, TRUNCATE_EXISTING)))
 		{
+			//Padding for 4-byte alignment for a row.
 			int padding = canvas.WIDTH % 4;
 			writeHeader(out);
 			for(int[] row: canvas.getPixels())
