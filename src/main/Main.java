@@ -10,7 +10,7 @@ public class Main
 		Brush b = new Brush();
 		a.setColor(0x0000FF);
 		b.setColor(0xFF0000);
-		int brushShapeSize = 40;
+		int brushShapeSize = 20;
 		BrushShape bs = new BrushShape(brushShapeSize);
 		
 		int radius = brushShapeSize / 2;
@@ -36,6 +36,6 @@ public class Main
 		
 		//new Thread(new Spiral(new Canvas(cSize), a, b)).start();
 		//new Thread(new Burst(new Canvas(cSize), a)).start();
-		new Thread(new Satellite(new Canvas(cSize), a)).start();
+		new Thread(new Satellite(new Canvas(cSize), b)).start();
 	}
 }

@@ -27,9 +27,6 @@ public class Burst extends Pattern
 				stroke(b, iterations, dx, dy);
 			}
 		}
-		
-		Converter co = new Converter(canvas);
-		co.convert("burst.bmp");
 	}
 	
 	private void stroke(Brush brush, double iterations, double dx, double dy)
