@@ -22,10 +22,10 @@ public class Converter
 			{
 				for(int pixel: row)
 				{
-					//int a = pixel >>> Pixel.ALPHA_BITPOSITION; //Alpha
+					int a = pixel >>> Pixel.ALPHA_BITPOSITION; //Alpha
 					int r = pixel >>> Pixel.RED_BITPOSITION; //Red
 					int g = pixel >>> Pixel.GREEN_BITPOSITION; //Green
-					//out.write(a);
+					out.write(a);
 					out.write(r);
 					out.write(g);
 					out.write(pixel);    //Blue

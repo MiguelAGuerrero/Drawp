@@ -24,7 +24,7 @@ public class Brush implements Applicator
 		apply(b, shape, this.x / 2, this.y / 2);
 	}
 	
-	private void apply(Bitmap<Integer> b, int[][] shape, double offsetX, double offsetY)
+	protected void apply(Bitmap<Integer> b, int[][] shape, double offsetX, double offsetY)
 	{
 		for(int i = 0; i < shape.length; i++)
 		{
@@ -35,18 +35,7 @@ public class Brush implements Applicator
 				{
 					int newX = (int) (this.x + offsetX - i);
 					int newY = (int) (this.y + offsetY - j);
-					int maxIntensity = 255;
-					if(p == maxIntensity)
-					{
-						b.setPixel(newX, newY, this.getColor());
-					}
-					
-					else
-					{
-						//TODO: Scale the RGB value individually, not the int representation
-						int scaledColor = this.getColor() * p / maxIntensity;
-						b.setPixel(newX, newY, scaledColor);
-					}
+					b.setPixel(newX, newY, p << Pixel.ALPHA_BITPOSITION & this.getColor());				
 				}
 			}
 		}

@@ -39,9 +39,8 @@ public class BrushShape
 		this.shape[x][y] = intensity;
 	}
 	
-	public int[][] getShape(){return shape;}
-	
-	public void apply(Brush brush, Bitmap<Integer> b)
+	public int[][] getShape()
 	{
+		return shape;
 	}
 }
