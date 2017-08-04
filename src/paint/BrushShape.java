@@ -39,31 +39,9 @@ public class BrushShape
 		this.shape[x][y] = intensity;
 	}
 	
+	public int[][] getShape(){return shape;}
+	
 	public void apply(Brush brush, Bitmap<Integer> b)
 	{
-		for(int i = 0; i < shape.length; i++)
-		{
-			for(int j = 0; j < shape[i].length; j++)
-			{
-				int p = shape[i][j];
-				if(p > 0)
-				{
-					int x = (int) (brush.x + centerX - i);
-					int y = (int) (brush.y + centerY - j);
-					int maxIntensity = 255;
-					if(p == maxIntensity)
-					{
-						b.setPixel(x, y, brush.getColor());
-					}
-					
-					else
-					{
-						//TODO: Scale the RGB value individually, not the int representation
-						int scaledColor = brush.getColor() * p / maxIntensity;
-						b.setPixel(x, y, scaledColor);
-					}
-				}
-			}
-		}
 	}
 }

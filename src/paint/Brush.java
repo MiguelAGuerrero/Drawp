@@ -5,7 +5,7 @@ public class Brush implements Applicator
 	protected double x;
 	protected double y;
 	protected int color = 0x0;
-	protected BrushShape shape;
+	protected BrushShape brushShape;
 	
 	//TODO: Incorporate blending
 	public enum BlendType {NORMAL, ADD, SUBTRACT};
@@ -14,13 +14,42 @@ public class Brush implements Applicator
 	{
 		this.x = 0;
 		this.y = 0;
-		this.shape = BrushShape.pixelPointPen();
+		this.brushShape = BrushShape.pixelPointPen();
 	}
 
 	@Override
 	public void apply(Bitmap<Integer> b)
 	{
-		this.shape.apply(this, b);
+		int[][] shape = brushShape.getShape();
+		apply(b, shape, this.x / 2, this.y / 2);
+	}
+	
+	private void apply(Bitmap<Integer> b, int[][] shape, double offsetX, double offsetY)
+	{
+		for(int i = 0; i < shape.length; i++)
+		{
+			for(int j = 0; j < shape[i].length; j++)
+			{
+				int p = shape[i][j];
+				if(p > 0)
+				{
+					int newX = (int) (this.x + offsetX - i);
+					int newY = (int) (this.y + offsetY - j);
+					int maxIntensity = 255;
+					if(p == maxIntensity)
+					{
+						b.setPixel(newX, newY, this.getColor());
+					}
+					
+					else
+					{
+						//TODO: Scale the RGB value individually, not the int representation
+						int scaledColor = this.getColor() * p / maxIntensity;
+						b.setPixel(newX, newY, scaledColor);
+					}
+				}
+			}
+		}
 	}
 	
 	public void moveTo(int x, int y)
@@ -50,6 +79,6 @@ public class Brush implements Applicator
 	
 	public void setShape(BrushShape bs)
 	{
-		this.shape = bs;
+		this.brushShape = bs;
 	}
 }
