@@ -11,12 +11,35 @@ public class ParticleTest {
 	
 	Particle p1;
 	Particle p2;
+	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception
+	{
 		p1 = new Particle();
 		p2 = new Particle();
 	}
-
+	
+	@Test
+	public void testDisplacementFromVelXNoAcceleration()
+	{
+		int velX = 1;
+		p1.setVelX(velX);
+		p1.move();
+		double epsilon = 0.00000001;
+		assertEquals(p1.getX(), velX, epsilon);
+	}
+	
+	@Test
+	public void testDisplacementFromVelXWithAcceleration()
+	{
+		int accX = 1;
+		p1.setAccelX(accX);
+		p1.move();
+		p1.move();
+		double epsilon = 0.00000001;
+		assertEquals(p1.getX(), accX, epsilon);
+	}
+	
 	@Test
 	public void testComparisonBetweenTwoParticlesAtDifferentXPositions()
 	{
@@ -55,5 +78,4 @@ public class ParticleTest {
 		p2.setY(y2);
 		assertTrue(p1.compareTo(p2) > 0);
 	}
-
 }

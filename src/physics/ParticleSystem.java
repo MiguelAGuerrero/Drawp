@@ -4,7 +4,13 @@ import java.util.TreeSet;
 
 public class ParticleSystem
 {
-	TreeSet<Particle> particles;
+	private TreeSet<Particle> particles;
+	
+	public ParticleSystem()
+	{
+		particles = new TreeSet<>();
+	}
+	
 	public void registerParticle(Particle p)
 	{
 		particles.add(p);
@@ -17,6 +23,6 @@ public class ParticleSystem
 	
 	public void update()
 	{
-		particles.forEach(action -> action.move());
+		particles.forEach(particle -> particle.move());
 	}
 }

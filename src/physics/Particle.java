@@ -29,12 +29,19 @@ public class Particle implements Kinetic, Comparable<Particle>
 			this.y = y;
 		}
 
+		public void setPosition(double x, double y)
+		{
+			setX(x);
+			setY(y);
+		}
+		
 		public double getVelX() {
 			return velX;
 		}
 
 		public void setVelX(double velX) {
 			this.velX = velX;
+			setAngleWithRespectToVelocity();
 		}
 
 		public double getVelY() {
@@ -43,6 +50,18 @@ public class Particle implements Kinetic, Comparable<Particle>
 
 		public void setVelY(double velY) {
 			this.velY = velY;
+			setAngleWithRespectToVelocity();
+		}
+
+		public void setVelocity(double x, double y)
+		{
+			setVelX(x);
+			setVelY(y);
+			setAngleWithRespectToVelocity();
+		}
+		
+		private void setAngleWithRespectToVelocity() {
+			angle = calculateAngleFromVelocities();
 		}
 
 		public double getAccelX() {
@@ -61,14 +80,32 @@ public class Particle implements Kinetic, Comparable<Particle>
 			this.accelY = accelY;
 		}
 
+		public void setAcceleration(double accelX, double accelY)
+		{
+			setAccelX(accelX);
+			setAccelY(accelY);
+		}
+		
 		public double getAngle() {
 			return angle;
 		}
 
 		public void setAngle(double angle) {
 			this.angle = angle;
+			setVelocitiesWithRespectToAngle();
 		}
-
+		
+		private void setVelocitiesWithRespectToAngle()
+		{
+			double speed = getSpeed();
+			this.velX = speed * Math.cos(angle);
+			this.velY = speed * Math.sin(angle);
+		}
+		
+		public double getSpeed(){
+			return Math.hypot(velX, velY);
+		}
+		
 		public double getAngularVelocity() {
 			return angularVelocity;
 		}
@@ -99,6 +136,7 @@ public class Particle implements Kinetic, Comparable<Particle>
 			{
 				angle += angularVelocity;
 				angularVelocity += angularAcceleration;
+				setVelocitiesWithRespectToAngle();
 			}
 		}
 		private void displaceParticle()
@@ -121,10 +159,16 @@ public class Particle implements Kinetic, Comparable<Particle>
 		@Override
 		public int compareTo(Particle otherParticle)
 		{
-			double dx = this.x - otherParticle.x;
-			double dy = this.y - otherParticle.y;
+			double dx = this.getX() - otherParticle.getX();
+			double dy = this.getY() - otherParticle.getY();
 			double units = dx + dy;
 			double origin = 0;
 			return Double.compare(units, origin);
+		}
+		
+		//TODO: Implement this using the physical state of the particle
+		public String toString()
+		{
+			return "";
 		}
 }
