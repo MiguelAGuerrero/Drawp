@@ -8,6 +8,7 @@ public class Particle implements Kinetic, Comparable<Particle>
 		private double velY;
 		private double accelX;
 		private double accelY;
+		
 		private double angle;
 		private double angularVelocity;
 		private double angularAcceleration;
@@ -87,11 +88,19 @@ public class Particle implements Kinetic, Comparable<Particle>
 		@Override
 		public void move()
 		{
-			if(this.angularVelocity > 0){}
+			applyAngularChangesToVelocities();
 			displaceParticle();
 			applyAcceleration();
 		}
 		
+		private void applyAngularChangesToVelocities()
+		{
+			if(this.angularAcceleration > 0)
+			{
+				angle += angularVelocity;
+				angularVelocity += angularAcceleration;
+			}
+		}
 		private void displaceParticle()
 		{
 			this.x += velX;
@@ -114,6 +123,8 @@ public class Particle implements Kinetic, Comparable<Particle>
 		{
 			double dx = this.x - otherParticle.x;
 			double dy = this.y - otherParticle.y;
-			return (int) (dx + dy);
+			double units = dx + dy;
+			double origin = 0;
+			return Double.compare(units, origin);
 		}
 }

@@ -1,11 +1,22 @@
 package physics;
 
-import java.util.ArrayList;
+import java.util.TreeSet;
 
-public abstract class ParticleSystem
+public class ParticleSystem
 {
-	ArrayList<Particle> particles;
-	public void registerParticle(Particle p){}
-	public void removeParticle(Particle p){}
-	public abstract void update();
+	TreeSet<Particle> particles;
+	public void registerParticle(Particle p)
+	{
+		particles.add(p);
+	}
+	
+	public void removeParticle(Particle p)
+	{
+		particles.remove(p);
+	}
+	
+	public void update()
+	{
+		particles.forEach(action -> action.move());
+	}
 }
