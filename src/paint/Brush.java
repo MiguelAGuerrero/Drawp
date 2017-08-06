@@ -7,9 +7,6 @@ public class Brush implements Applicator
 	protected int color = 0x0;
 	protected BrushShape brushShape;
 	
-	//TODO: Incorporate blending
-	public enum BlendType {NORMAL, ADD, SUBTRACT};
-	
 	public Brush()
 	{
 		this.x = 0;
@@ -21,7 +18,7 @@ public class Brush implements Applicator
 	public void apply(Bitmap<Integer> b)
 	{
 		int[][] shape = brushShape.getShape();
-		apply(b, shape, this.x / 2, this.y / 2);
+		apply(b, shape, shape.length / 2, shape[0].length / 2);
 	}
 	
 	protected void apply(Bitmap<Integer> b, int[][] shape, double offsetX, double offsetY)
@@ -33,9 +30,9 @@ public class Brush implements Applicator
 				int p = shape[i][j];
 				if(p > 0)
 				{
-					int newX = (int) (this.x + offsetX - i);
-					int newY = (int) (this.y + offsetY - j);
-					b.setPixel(newX, newY, p << Pixel.ALPHA_BITPOSITION & this.getColor());				
+					int posX = (int) (this.x + offsetX - i);
+					int posY = (int) (this.y + offsetY - j);
+					b.setPixel(posX, posY, p << Pixel.ALPHA_BITPOSITION & this.getColor());				
 				}
 			}
 		}

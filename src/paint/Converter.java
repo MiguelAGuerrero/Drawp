@@ -67,7 +67,7 @@ public class Converter
 		byte[] bitmapWidth = intToByteArray(canvas.WIDTH);
 		byte[] bitmapHeight = intToByteArray(canvas.HEIGHT);
 		byte[] numColorPlanes = {1, 0};
-		byte[] bitsPerPixel = {24, 0};
+		byte[] bitsPerPixel = {32, 0};
 		byte[] compressionMethod = emptyValues;
 		byte[] imageSize = intToByteArray(rawData);
 		byte[] horizontalResolution = {35, 28, 0, 0};

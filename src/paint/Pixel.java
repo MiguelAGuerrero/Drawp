@@ -47,6 +47,5 @@ public class Pixel
 	public String toString()
 	{
 		return  "R: " + "G: " + g + "B: " + b + "A: " + a;
-		
 	}
 }

@@ -44,7 +44,6 @@ public class Satellite extends Pattern
 				siny = Math.sin(Math.toRadians(20 * angle));
 				x = refx + 2 * brushRadius * cosx;
 				y = refy + 2 * brushRadius * siny;
-				System.out.printf("%f\r", (double) (i / iterations));
 				b.moveTo(x, y);
 				
 				b.apply(canvas);

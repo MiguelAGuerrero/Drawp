@@ -1,7 +1,5 @@
 package paint;
 
-import java.util.Arrays;
-
 public class BrushShape
 {
 	private static BrushShape pointPen;
@@ -23,10 +21,6 @@ public class BrushShape
 	public BrushShape(int size)
 	{
 		shape = new int[size][size];
-		for(int[] row: shape)
-		{
-			Arrays.fill(row, 0);
-		}
 	}
 	
 	public void setApplicationPoint(int x, int y)

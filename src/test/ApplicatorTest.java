@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import paint.Applicator;
+import paint.Brush;
 import paint.Canvas;
-import paint.PointBrush;
 
 public class ApplicatorTest 
 {
@@ -23,7 +23,7 @@ public class ApplicatorTest
 		int size = 10;
 		testCanvas = new Canvas(size);
 		testCanvas.fill(0xFFFFFF);
-		testBrush = new PointBrush();
+		testBrush = new Brush();
 	}
 	
 	@Test
