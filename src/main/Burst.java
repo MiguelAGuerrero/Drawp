@@ -18,13 +18,14 @@ public class Burst extends Pattern
 		for(Brush b: brushes)
 		{
 			int units = 10;
-			int DEGREES_IN_CIRCLE = 360;
+			final int DEGREES_IN_CIRCLE = 360;
+			final double deltaAngle = DEGREES_IN_CIRCLE / units;
 			
-			for(int i = 0; i < units; i += DEGREES_IN_CIRCLE / units)
+			for(int i = 0; i < units; i++)
 			{
-				double dx =  Math.cos(Math.toRadians(i));
-				double dy = Math.sin(Math.toRadians(i));
-				stroke(b, iterations, dx, dy);
+				double dx =  Math.cos(Math.toRadians(i * deltaAngle));
+				double dy = Math.sin(Math.toRadians(i * deltaAngle));
+				stroke(b, iterations - i * 10 * Math.abs(Math.sin(Math.toRadians(i * deltaAngle))), dx, dy);
 			}
 		}
 	}

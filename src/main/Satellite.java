@@ -2,7 +2,6 @@ package main;
 
 import paint.Brush;
 import paint.Canvas;
-import paint.Converter;
 
 public class Satellite extends Pattern
 {
@@ -14,7 +13,7 @@ public class Satellite extends Pattern
 	public void draw()
 	{
 		double angle = 0;
-		double deltaAngle = 0.1;
+		double deltaAngle = 0.05;
 		int cx  = canvas.HEIGHT / 2;
 		int cy = canvas.WIDTH / 2;
 		int iterations = 10000;

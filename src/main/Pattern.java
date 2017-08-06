@@ -20,7 +20,8 @@ public abstract class Pattern implements Runnable
 	public abstract void draw();
 	
 	@Override
-	public void run(){
+	public void run()
+	{
 		draw();
 		converter.convert(this.getClass().getSimpleName() + ".bmp");
 	}

@@ -35,7 +35,7 @@ public class Main
 		b.setShape(bs);
 		
 		//new Thread(new Spiral(new Canvas(cSize), a, b)).start();
-		//new Thread(new Burst(new Canvas(cSize), a)).start();
-		new Thread(new Satellite(new Canvas(cSize), b)).start();
+		new Thread(new Burst(new Canvas(cSize), b)).start();
+		//new Thread(new Satellite(new Canvas(cSize), b)).start();
 	}
 }
