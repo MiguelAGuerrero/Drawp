@@ -11,7 +11,7 @@ public class ParticleSystem
 	
 	public ParticleSystem()
 	{
-		particles = new TreeSet<>();
+		particles = new ArrayList<>();
 		forces = new ArrayList<>();
 	}
 	

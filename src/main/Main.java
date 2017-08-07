@@ -1,11 +1,12 @@
 package main;
 import paint.*;
+import physics.ParticleSystem;
 
 public class Main
 {
 	public static void main(String[] args)
 	{
-		int cSize = 1000;
+		int cSize = 500;
 		Brush a = new Brush();
 		Brush b = new Brush();
 		a.setColor(0x0000FF);
@@ -34,8 +35,14 @@ public class Main
 		
 		b.setShape(bs);
 		
+		new Thread(new Particles(new Canvas(cSize), b, b, b, b)).start();
+	}
+	
+	public static void patterns()
+	{
 		//new Thread(new Spiral(new Canvas(cSize), a, b)).start();
 		//new Thread(new Burst(new Canvas(cSize), a)).start();
-		new Thread(new Satellite(new Canvas(cSize), a)).start();
+		//new Thread(new Satellite(new Canvas(cSize), a)).start();
+		
 	}
 }

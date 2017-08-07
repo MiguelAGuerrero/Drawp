@@ -25,5 +25,4 @@ public abstract class Pattern implements Runnable
 		draw();
 		converter.convert(this.getClass().getSimpleName() + ".bmp");
 	}
-	
 }

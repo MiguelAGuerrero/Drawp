@@ -57,7 +57,6 @@ public class Particle implements Comparable<Particle>
 		{
 			setVelX(x);
 			setVelY(y);
-			setAngleWithRespectToVelocity();
 		}
 		
 		private void setAngleWithRespectToVelocity() {
@@ -131,7 +130,7 @@ public class Particle implements Comparable<Particle>
 		
 		private void applyAngularChangesToVelocities()
 		{
-			if(this.angularAcceleration > 0)
+			if(this.angularVelocity > 0 || this.angularAcceleration > 0)
 			{
 				angle += angularVelocity;
 				angularVelocity += angularAcceleration;
