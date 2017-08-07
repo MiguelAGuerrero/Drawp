@@ -1,14 +1,18 @@
 package physics;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.TreeSet;
 
 public class ParticleSystem
 {
-	private TreeSet<Particle> particles;
+	private Collection<Particle> particles;
+	private Collection<Force> forces;
 	
 	public ParticleSystem()
 	{
 		particles = new TreeSet<>();
+		forces = new ArrayList<>();
 	}
 	
 	public void registerParticle(Particle p)
@@ -21,8 +25,26 @@ public class ParticleSystem
 		particles.remove(p);
 	}
 	
+	public void registerForce(Force f)
+	{
+		forces.add(f);
+	}
+	
+	public void removeForce(Force f)
+	{
+		forces.remove(f);
+	}
+	
 	public void update()
 	{
-		particles.forEach(particle -> particle.move());
+		for(Force f: forces)
+		{
+			for(Particle p: particles)
+			{
+				f.applyForce(p);
+			}
+		}
+	
+		for(Particle p: particles) { p.move(); }
 	}
 }

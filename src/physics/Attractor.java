@@ -12,7 +12,7 @@ public class Attractor extends Particle implements Force
 	}
 	
 	@Override
-	public void apply(Particle particle)
+	public void applyForce(Particle particle)
 	{
 		if(isInRange(particle))
 		{

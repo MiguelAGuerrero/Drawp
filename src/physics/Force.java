@@ -2,5 +2,5 @@ package physics;
 
 public interface Force 
 {
-	public void apply(Particle obj);
+	public void applyForce(Particle particle);
 }

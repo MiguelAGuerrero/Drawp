@@ -1,6 +1,6 @@
 package physics;
 
-public class Particle implements Kinetic, Comparable<Particle>
+public class Particle implements Comparable<Particle>
 {
 		private double x;
 		private double y;
@@ -122,7 +122,6 @@ public class Particle implements Kinetic, Comparable<Particle>
 			this.angularAcceleration = angularAcceleration;
 		}
 
-		@Override
 		public void move()
 		{
 			applyAngularChangesToVelocities();
