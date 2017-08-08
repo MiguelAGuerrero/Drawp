@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import paint.Brush;
 import paint.Canvas;
-import physics.Attractor;
+import physics.ForceField;
 import physics.Particle;
 import physics.ParticleSystem;
 import java.util.Random;
@@ -39,9 +39,14 @@ public class Particles extends Pattern
 	
 	private void addAttractor()
 	{
-		Attractor a = new Attractor(30, 5);
-		a.setPosition(canvas.WIDTH / 2, canvas.HEIGHT / 2);
+		double radius = 100;
+		double strength = 0;
+		ForceField a = new ForceField(radius, strength);
+		ForceField b = new ForceField(radius, strength);
+		a.setPosition(canvas.WIDTH / 3, canvas.HEIGHT / 2);
+		b.setPosition(2 * canvas.WIDTH / 3, canvas.HEIGHT / 2);
 		system.registerForce(a);
+		system.registerForce(b);
 	}
 	
 	private void registerParticleBrushes()
@@ -61,6 +66,7 @@ public class Particles extends Pattern
 			pb.apply(canvas);
 		}
 	}
+	
 	private void setupParticles()
 	{
 		int cx = canvas.WIDTH / 2;
@@ -76,9 +82,12 @@ public class Particles extends Pattern
 			double cosx = Math.cos(Math.toRadians(i * interval));
 			double siny =  Math.sin(Math.toRadians(i * interval));
 			pb.setPosition(cx + radius * cosx, cy + radius * siny);
-			pb.setVelocity(-cosx, -siny);
-			pb.setAcceleration(cosx / 2000, siny / 2000);
-			pb.setAngularVelocity(0.005);
+			float f = 0.25f;
+			double eo = f + i % 2 * f;
+			pb.setVelocity(cosx , siny);
+			pb.setAccelX(-1);
+			//pb.setAngularVelocity(0.1);
+			//pb.setAngularAcceleration(-0.005);
 		}
 	}
 }

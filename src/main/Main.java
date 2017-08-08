@@ -6,13 +6,13 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		int cSize = 500;
+		int cSize = 1000;
 		Brush a = new Brush();
 		Brush b = new Brush();
 		a.setColor(0x0000FF);
 		b.setColor(0xFF0000);
 		int brushShapeSize = 20;
-		BrushShape bs = new BrushShape(brushShapeSize);
+		BrushShape bs = new BrushShape();
 		
 		int radius = brushShapeSize / 2;
 	
@@ -27,7 +27,7 @@ public class Main
 		
 		a.setShape(bs);
 		
-		bs = new BrushShape(brushShapeSize);
+		bs = new BrushShape();
 		for(int i = 1; i < brushShapeSize; i++)
 		{
 			bs.setApplicationPoint(i, i, i * 255 / i);
@@ -35,7 +35,12 @@ public class Main
 		
 		b.setShape(bs);
 		
-		new Thread(new Particles(new Canvas(cSize), b, b, b, b)).start();
+		int color = 0xFFFFFFFF;
+		a.setColor(color);
+		b.setColor(color);
+		
+		Canvas c = new Canvas(cSize);
+		new Thread(new Particles(c, b, b, b, b, b, b, b, b, b, b, b ,b ,b, b)).start();
 	}
 	
 	public static void patterns()
@@ -43,6 +48,5 @@ public class Main
 		//new Thread(new Spiral(new Canvas(cSize), a, b)).start();
 		//new Thread(new Burst(new Canvas(cSize), a)).start();
 		//new Thread(new Satellite(new Canvas(cSize), a)).start();
-		
 	}
 }

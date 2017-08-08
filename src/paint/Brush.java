@@ -17,24 +17,12 @@ public class Brush implements Applicator
 	@Override
 	public void apply(Bitmap<Integer> b)
 	{
-		int[][] shape = brushShape.getShape();
-		apply(b, shape, shape.length / 2, shape[0].length / 2);
-	}
-	
-	protected void apply(Bitmap<Integer> b, int[][] shape, double offsetX, double offsetY)
-	{
-		for(int i = 0; i < shape.length; i++)
+		for(ApplicationPoint ap: brushShape)
 		{
-			for(int j = 0; j < shape[i].length; j++)
-			{
-				int p = shape[i][j];
-				if(p > 0)
-				{
-					int posX = (int) (this.x + offsetX - i);
-					int posY = (int) (this.y + offsetY - j);
-					b.setPixel(posX, posY, p << Pixel.ALPHA_BITPOSITION & this.getColor());				
-				}
-			}
+			int posX = (int) (this.x + ap.x());
+			int posY = (int) (this.y + ap.y());
+			int pixel = ap.intensity() << Pixel.ALPHA_BITPOSITION & this.getColor();
+			b.setPixel(posX, posY, pixel);				
 		}
 	}
 	

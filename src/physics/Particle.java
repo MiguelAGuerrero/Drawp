@@ -53,10 +53,11 @@ public class Particle implements Comparable<Particle>
 			setAngleWithRespectToVelocity();
 		}
 
-		public void setVelocity(double x, double y)
+		public void setVelocity(double dx, double y)
 		{
-			setVelX(x);
-			setVelY(y);
+			this.velX = dx;
+			this.velY = y;
+			setAngleWithRespectToVelocity();
 		}
 		
 		private void setAngleWithRespectToVelocity() {
@@ -97,8 +98,8 @@ public class Particle implements Comparable<Particle>
 		private void setVelocitiesWithRespectToAngle()
 		{
 			double speed = getSpeed();
-			this.velX = speed * Math.cos(angle);
-			this.velY = speed * Math.sin(angle);
+			this.velX = speed * Math.cos(Math.toRadians(angle));
+			this.velY = speed * Math.sin(Math.toRadians(angle));
 		}
 		
 		public double getSpeed(){
@@ -137,6 +138,7 @@ public class Particle implements Comparable<Particle>
 				setVelocitiesWithRespectToAngle();
 			}
 		}
+		
 		private void displaceParticle()
 		{
 			this.x += velX;
