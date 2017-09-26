@@ -25,7 +25,7 @@ public class Burst extends Pattern
 			{
 				double dx =  Math.cos(Math.toRadians(i * deltaAngle));
 				double dy = Math.sin(Math.toRadians(i * deltaAngle));
-				stroke(b, iterations - i * 10 * Math.abs(Math.sin(Math.toRadians(i * deltaAngle))), dx, dy);
+				stroke(b, iterations, dx, dy);
 			}
 		}
 	}

@@ -22,7 +22,7 @@ public class ParticleBrush extends Particle implements Applicator
 	@Override
 	public void apply(Bitmap<Integer> b)
 	{
-		this.brush.moveTo(this.getX(), this.getY());
-		this.brush.apply(b);
+		brush.moveTo(this.getX(), this.getY());
+		brush.apply(b);
 	}
 }

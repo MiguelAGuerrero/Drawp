@@ -23,7 +23,7 @@ public class ParticleTest {
 	public void testDisplacementFromVelXNoAcceleration()
 	{
 		int velX = 1;
-		p1.setVelX(velX);
+		p1.setVelocityX(velX);
 		p1.move();
 		double epsilon = 0.00000001;
 		assertEquals(p1.getX(), velX, epsilon);

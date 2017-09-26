@@ -45,7 +45,7 @@ public class Particles extends Pattern
 		ForceField b = new ForceField(radius, strength);
 		a.setPosition(canvas.WIDTH / 3, canvas.HEIGHT / 2);
 		b.setPosition(2 * canvas.WIDTH / 3, canvas.HEIGHT / 2);
-		system.registerForce(a);
+		system.registerForce(a); 
 		system.registerForce(b);
 	}
 	
@@ -84,10 +84,12 @@ public class Particles extends Pattern
 			pb.setPosition(cx + radius * cosx, cy + radius * siny);
 			float f = 0.25f;
 			double eo = f + i % 2 * f;
-			pb.setVelocity(cosx , siny);
-			pb.setAccelX(-1);
-			//pb.setAngularVelocity(0.1);
-			//pb.setAngularAcceleration(-0.005);
+
 		}
+	}
+	
+	private void setMotion(ParticleBrush pb)
+	{
+	
 	}
 }

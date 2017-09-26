@@ -40,7 +40,8 @@ public class Main
 		b.setColor(color);
 		
 		Canvas c = new Canvas(cSize);
-		new Thread(new Particles(c, b, b, b, b, b, b, b, b, b, b, b ,b ,b, b)).start();
+		Brush[] brushArray = {b};
+		new Thread(new Test(c, brushArray)).start();
 	}
 	
 	public static void patterns()

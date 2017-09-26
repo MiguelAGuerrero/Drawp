@@ -60,7 +60,6 @@ public class BrushShape implements Iterable<ApplicationPoint>
 			this.intensity = intensity % MAX_INTENSITY;
 		}
 
-
 		@Override
 		public double x()
 		{
@@ -82,15 +81,11 @@ public class BrushShape implements Iterable<ApplicationPoint>
 		@Override
 		public int compareTo(ApplicationPoint ap)
 		{			
-			if(this.x() > ap.x()){ return 1; }
-			else if(Double.compare(this.x(), ap.x()) == 0)
-			{
-				if(this.y() > ap.y()) { return 1; }
-				if(Double.compare(this.y(), ap.y()) == 0) { return 0; }
-				else return -1;
-			}
-			
-			else return -1;
+			double dx = this.x() - ap.x();
+			double dy = this.y() - ap.y();
+			double units = dx + dy;
+			double origin = 0;
+			return Double.compare(units, origin);
 		}
 	}
 

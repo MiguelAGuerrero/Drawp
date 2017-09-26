@@ -35,28 +35,28 @@ public class Particle implements Comparable<Particle>
 			setY(y);
 		}
 		
-		public double getVelX() {
+		public double getVelocityX() {
 			return velX;
 		}
 
-		public void setVelX(double velX) {
+		public void setVelocityX(double velX) {
 			this.velX = velX;
 			setAngleWithRespectToVelocity();
 		}
 
-		public double getVelY() {
+		public double getVelocityY() {
 			return velY;
 		}
 
-		public void setVelY(double velY) {
+		public void setVelocityY(double velY) {
 			this.velY = velY;
 			setAngleWithRespectToVelocity();
 		}
 
-		public void setVelocity(double dx, double y)
+		public void setVelocity(double dx, double dy)
 		{
 			this.velX = dx;
-			this.velY = y;
+			this.velY = dy;
 			setAngleWithRespectToVelocity();
 		}
 		
@@ -72,18 +72,18 @@ public class Particle implements Comparable<Particle>
 			this.accelX = accelX;
 		}
 
-		public double getAccelY() {
+		public double getAccelerationX() {
 			return accelY;
 		}
 
-		public void setAccelY(double accelY) {
+		public void setAccelerationY(double accelY) {
 			this.accelY = accelY;
 		}
 
 		public void setAcceleration(double accelX, double accelY)
 		{
 			setAccelX(accelX);
-			setAccelY(accelY);
+			setAccelerationY(accelY);
 		}
 		
 		public double getAngle() {
