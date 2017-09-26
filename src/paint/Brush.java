@@ -7,6 +7,8 @@ public class Brush implements Applicator
 	protected int color = 0x0;
 	protected BrushShape brushShape;
 	
+	//TODO: Create methods for blending
+	protected Blender<Integer> blendType;
 	public Brush()
 	{
 		this.x = 0;
@@ -22,14 +24,13 @@ public class Brush implements Applicator
 			int posX = (int) (this.x + ap.x());
 			int posY = (int) (this.y + ap.y());
 			int pixel = ap.intensity() << Pixel.ALPHA_BITPOSITION & this.getColor();
+			if(blendType != null)
+			{
+				pixel = blendType.blend(pixel, b.getPixel(posX, posY));
+			}
+			
 			b.setPixel(posX, posY, pixel);				
 		}
-	}
-	
-	public void moveTo(int x, int y)
-	{
-		this.x = x;
-		this.y = y;
 	}
 	
 	public void moveTo(double x, double y)
@@ -54,5 +55,10 @@ public class Brush implements Applicator
 	public void setShape(BrushShape bs)
 	{
 		this.brushShape = bs;
+	}
+	
+	public void setBlendType(BlendType bt)
+	{
+		this.blendType = bt;
 	}
 }

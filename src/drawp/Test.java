@@ -1,5 +1,6 @@
 package drawp;
 
+import paint.BlendType;
 import paint.Brush;
 import paint.Canvas;
 
@@ -12,6 +13,7 @@ public class Test extends Pattern
 	@Override
 	public void draw(){
 		Brush b = brushes[0];
+		b.setBlendType(BlendType.SUBTRACT);
 		int cx = canvas.WIDTH / 2;
 		int cy = canvas.HEIGHT / 2;
 		b.moveTo(cx, cy);

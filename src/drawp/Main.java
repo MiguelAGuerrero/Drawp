@@ -12,8 +12,8 @@ public class Main
 		int cSize = 1000;
 		Brush a = new Brush();
 		Brush b = new Brush();
-		a.setColor(0x0000FF);
-		b.setColor(0xFF0000);
+		a.setColor(0x00000F);
+		b.setColor(0x1111);
 		int brushShapeSize = 20;
 		BrushShape bs = new BrushShape();
 		
@@ -31,9 +31,10 @@ public class Main
 		a.setShape(bs);
 		
 		bs = new BrushShape();
+		int interval = 255 / brushShapeSize;
 		for(int i = 1; i < brushShapeSize; i++)
 		{
-			bs.setApplicationPoint(i, i, i * 255 / i);
+			bs.setApplicationPoint(i, i, i * interval);
 		}
 		
 		b.setShape(bs);

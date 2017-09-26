@@ -68,7 +68,10 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 
 	private boolean inBounds(int x, int y)
 	{
-		return x >= 0 && x < this.WIDTH && y >= 0 && y < this.HEIGHT;
+		return x >= 0 
+				&& x < this.WIDTH 
+				&& y >= 0 
+				&& y < this.HEIGHT;
 	}
 
 	public void fill(Integer pixel)
@@ -84,6 +87,7 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 
 	private class CanvasIterator implements Iterator<Integer>
 	{
+		private int curPixelPos = 0;
 		private int row = 0;
 		private int column = 0;
 
@@ -103,12 +107,9 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 
 		private void moveToNextPosition()
 		{
-			column++;
-			if(column == WIDTH)
-			{
-				column = 0;
-				row++;
-			}
+			curPixelPos++;
+			column = (column + 1) % WIDTH;
+			row = curPixelPos % WIDTH;
 		}
 	}
 }

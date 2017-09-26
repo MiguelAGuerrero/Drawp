@@ -117,6 +117,30 @@ public class TestParticle
 		assertEquals(pos, expectedPos, epsilon);
 	}
 	
+	@Test
+	public void testNoChangeInPosFromSetAngleAtRestState()
+	{
+		double angle = 45;
+		double x1 = p.getX();
+		double y1 = p.getY();
+		p.setAngle(angle);
+		double x2 = p.getX();
+		double y2 = p.getY();
+		assertEquals(Math.hypot(x1, y1), Math.hypot(x2, y2), epsilon);
+	}
+	
+	@Test
+	public void testChangeIn()
+	{
+		double angle = 45;
+		double x1 = p.getX();
+		double y1 = p.getY();
+		p.setAngle(angle);
+		double x2 = p.getX();
+		double y2 = p.getY();
+		assertEquals(Math.hypot(x1, y1), Math.hypot(x2, y2), epsilon);
+	}
+	
 	private void moveByFrames(Particle p, int frames)
 	{
 		for(int i = 0; i < frames; i++)
