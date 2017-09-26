@@ -19,7 +19,6 @@ public class TestParticle
 		p = new Particle();
 	}
 
-	
 	@Test
 	public void testPositiveVelocityX()
 	{
@@ -63,19 +62,59 @@ public class TestParticle
 	@Test
 	public void testPositiveVelocityXY()
 	{
-		double vel = 100;
-		p.setVelocity(vel, vel);
+		double velX = 3;
+		double velY = 4;
+		p.setVelocity(velX, velY);
 		p.move();
-		assertEquals(p.getX() + p.getY(), 2 * vel, epsilon);
+		double dist = Math.hypot(p.getVelocityX(), p.getVelocityY());
+		double expectedDist = 5; 
+		assertEquals(dist, expectedDist, epsilon);
 	}
 	
 	@Test
 	public void testNegativeVelocityXY()
 	{
-		double vel = -100;
-		p.setVelocity(vel, vel);
+		double velX = -3;
+		double velY = -4;
+		p.setVelocity(velX, velY);
 		p.move();
-		assertEquals(p.getX() + p.getY(), 2 * vel, epsilon);
+		double dist = Math.hypot(p.getVelocityX(), p.getVelocityY());
+		double expectedDist = 5; 
+		assertEquals(dist, expectedDist, epsilon);
+	}
+	
+	@Test
+	public void testPositiveAccelX()
+	{
+		double accelX = 1;
+		p.setAccelX(accelX);
+		moveByFrames(p, 2);
+		double expectedPosX = accelX;
+		assertEquals(p.getX(), expectedPosX, epsilon);
+	}
+	
+	@Test
+	public void testPositiveAccelY()
+	{
+		double accelY = 1;
+		p.setAccelerationY(accelY);
+		int displacementFrame = 2;
+		moveByFrames(p, displacementFrame);
+		double expectedPosY = accelY;
+		assertEquals(p.getY(), expectedPosY, epsilon);
+	}
+	
+	@Test
+	public void testPositiveAccelXY()
+	{
+		double accelX = 1;
+		double accelY = 1;
+		p.setAcceleration(accelX, accelY);
+		int displacementFrame = 2;
+		moveByFrames(p, displacementFrame);
+		double pos = Math.hypot(p.getX(), p.getY());
+		double expectedPos = Math.pow(2, 0.5);
+		assertEquals(pos, expectedPos, epsilon);
 	}
 	
 	private void moveByFrames(Particle p, int frames)
