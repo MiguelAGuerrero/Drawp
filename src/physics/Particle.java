@@ -13,6 +13,7 @@ public class Particle implements Comparable<Particle>
 		private double angularVelocity;
 		private double angularAcceleration;
 		
+		
 		public double getX() {
 			return x;
 		}
