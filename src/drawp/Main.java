@@ -1,6 +1,9 @@
-package main;
-import paint.*;
+package drawp;
+import paint.Brush;
+import paint.BrushShape;
+import paint.Canvas;
 import physics.ParticleSystem;
+import testpaint.*;
 
 public class Main
 {

@@ -1,4 +1,4 @@
-package test;
+package testdrawp;
 
 import static org.junit.Assert.*;
 

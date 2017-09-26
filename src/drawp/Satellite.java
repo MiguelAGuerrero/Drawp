@@ -1,4 +1,4 @@
-package main;
+package drawp;
 
 import paint.Brush;
 import paint.Canvas;

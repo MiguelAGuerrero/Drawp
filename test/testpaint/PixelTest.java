@@ -1,4 +1,4 @@
-package test;
+package testpaint;
 
 import static org.junit.Assert.*;
 

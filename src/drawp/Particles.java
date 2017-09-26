@@ -1,4 +1,4 @@
-package main;
+package drawp;
 
 import java.util.Collection;
 import java.util.Iterator;
