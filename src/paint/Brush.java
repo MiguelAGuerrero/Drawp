@@ -17,7 +17,7 @@ public class Brush implements Applicator
 	}
 
 	@Override
-	public void apply(Bitmap<Integer> b)
+	public void apply(Bitmap<Integer> bitmap)
 	{
 		for(ApplicationPoint ap: brushShape)
 		{
@@ -26,10 +26,10 @@ public class Brush implements Applicator
 			int pixel = ap.intensity() << Pixel.ALPHA_BITPOSITION & this.getColor();
 			if(blendType != null)
 			{
-				pixel = blendType.blend(pixel, b.getPixel(posX, posY));
+				pixel = blendType.blend(pixel, bitmap.getPixel(posX, posY));
 			}
 			
-			b.setPixel(posX, posY, pixel);				
+			bitmap.setPixel(posX, posY, pixel);				
 		}
 	}
 	

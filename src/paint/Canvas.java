@@ -5,8 +5,8 @@ import java.util.Iterator;
 
 /**
  * Canvas represents a primitive bitmap. 
- * It stores pixels as ints in a 2D array data structure and maps their position 1 : 1
- * to their index in the in 2D array.
+ * Stores pixels as primitive integers in a 2D array, whose position is 1 : 1
+ * to their index in the array.
  * @author Miguel Guerrero
  */
 

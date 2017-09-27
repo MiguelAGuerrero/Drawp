@@ -44,7 +44,7 @@ public class Main
 		b.setColor(color);
 		
 		Canvas c = new Canvas(cSize);
-		Brush[] brushArray = {b};
+		Brush[] brushArray = {a};
 		new Thread(new Test(c, brushArray)).start();
 	}
 	

@@ -2,27 +2,51 @@ package drawp;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import paint.Applicator;
 import paint.Bitmap;
 
-public class ParticleBrushGroup implements Applicator 
+public class CompositeParticleBrush extends ParticleBrush implements Applicator, Iterable<ParticleBrush>
 {
-	Collection<ParticleBrush> brushes;
+	private Collection<ParticleBrush> brushes;
 	
-	public ParticleBrushGroup(ParticleBrush... brushes)
+	public CompositeParticleBrush(ParticleBrush... brushes)
 	{
 		this.brushes = new ArrayList<ParticleBrush>();
-		for(ParticleBrush b: brushes) 
-			this.brushes.add(b);
+		for(ParticleBrush b: brushes) { this.brushes.add(b); }
+	}
+
+	public void addBrush(ParticleBrush pb)
+	{
+		this.brushes.add(pb);
+	}
+	
+	public void removeBrush(ParticleBrush pb)
+	{
+		this.brushes.remove(pb);
 	}
 	
 	@Override
 	public void apply(Bitmap<Integer> b)
 	{
+		for(ParticleBrush pb: brushes) { pb.apply(b); }
+	}
+	
+	public void move()
+	{
 		for(ParticleBrush pb: brushes)
 		{
-			pb.apply(b);
+			pb.setPosition(pb.getX() + getVelocityX(), 
+					pb.getY() + getVelocityY());
 		}
+		
+		super.move();
+	}
+	
+	@Override
+	public Iterator<ParticleBrush> iterator()
+	{
+		return brushes.iterator();
 	}
 }
