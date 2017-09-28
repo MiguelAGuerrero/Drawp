@@ -16,9 +16,8 @@ public class Main
 		b.setColor(0x1111);
 		int brushShapeSize = 20;
 		BrushShape bs = new BrushShape();
-		
-		int radius = brushShapeSize / 2;
 	
+		int radius = brushShapeSize / 2;
 		for(int i = 0; i < brushShapeSize; i++)
 		{
 			int angle = i  * 360 / brushShapeSize;
