@@ -13,10 +13,6 @@ public class Test extends Pattern
 	@Override
 	public void draw(){
 		Brush b = brushes[0];
-		b.setBlendType(BlendType.SUBTRACT);
-		b.getBlendType().setDestBlendFactor(0);
-		b.getBlendType().setSrcBlendFactor(0);
-		b.setColor(0x11111111);
 		int cx = canvas.WIDTH / 2;
 		int cy = canvas.HEIGHT / 2;
 		b.moveTo(cx, cy);

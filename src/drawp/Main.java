@@ -12,8 +12,6 @@ public class Main
 		int cSize = 1000;
 		Brush a = new Brush();
 		Brush b = new Brush();
-		a.setColor(0x00000F);
-		b.setColor(0x1111);
 		int brushShapeSize = 20;
 		BrushShape bs = new BrushShape();
 	
@@ -38,7 +36,7 @@ public class Main
 		
 		b.setShape(bs);
 		
-		int color = 0xFFFFFFFF;
+		int color = 0x00FF00FF;
 		a.setColor(color);
 		b.setColor(color);
 		
