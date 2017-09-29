@@ -8,7 +8,7 @@ public class Brush implements Applicator
 	protected BrushShape brushShape;
 	
 	//TODO: Create methods for blending
-	protected Blender<Integer> blendType;
+	protected BlendType blendType;
 	public Brush()
 	{
 		this.x = 0;
@@ -26,7 +26,7 @@ public class Brush implements Applicator
 			int pixel = ap.intensity() << Pixel.ALPHA_BITPOSITION & this.getColor();
 			if(blendType != null)
 			{
-				pixel = blendType.blend(pixel, bitmap.getPixel(posX, posY), 0, 0);
+				pixel = blendType.blend(pixel, bitmap.getPixel(posX, posY));
 			}
 			
 			bitmap.setPixel(posX, posY, pixel);				
