@@ -44,7 +44,9 @@ public class Main
 		
 		Canvas c = new Canvas(cSize);
 		Brush[] brushArray = {a};
-		new Thread(new Test(c, brushArray)).start();
+		Pattern p = new Test(c, brushArray);
+		new Thread(p).start();
+		System.out.println("Completed: " + p.getClass().getSimpleName());
 	}
 	
 	public static void patterns()

@@ -30,10 +30,18 @@ public class Pixel
 	
 	public Pixel(int packedARGBVal)
 	{
-		this.a = (byte) getAValue(packedARGBVal);
-		this.r = (byte) getRValue(packedARGBVal);
-		this.g = (byte) getGValue(packedARGBVal);
-		this.b = (byte) getBValue(packedARGBVal);
+		this.a = getAValue(packedARGBVal);
+		this.r = getRValue(packedARGBVal);
+		this.g = getGValue(packedARGBVal);
+		this.b = getBValue(packedARGBVal);
+	}
+	
+	public Pixel(int r, int g, int b, int a)
+	{
+		this.r = r;
+		this.g = g;
+		this.b = b;
+		this.a = a;
 	}
 	
 	public int toInt()
@@ -53,4 +61,24 @@ public class Pixel
 	{
 		return  "R: " + "G: " + g + "B: " + b + "A: " + a;
 	}
+	
+	public static Pixel valueOf(int pixelData)
+	{
+		return new Pixel(pixelData);
+	}
+	
+	public boolean equals(Pixel p)
+	{
+		if(this.a == p.a 
+			&& this.r == p.r
+			&& this.g == p.g 
+			&& this.b == p.b)
+		{
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
 }

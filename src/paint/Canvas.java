@@ -47,7 +47,7 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 	 */
 	public Canvas(int size) { this(size, size); }
 
-	public boolean setPixel(int x, int y, Integer pixelData)
+	public boolean setPixel(Integer pixelData, int x, int y)
 	{
 		if(inBounds(x, y))
 		{

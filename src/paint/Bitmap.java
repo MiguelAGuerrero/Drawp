@@ -7,6 +7,6 @@ package paint;
  */
 public interface Bitmap<T>
 {
-	boolean setPixel(int x, int y, T pixel);
+	boolean setPixel(T pixel, int x, int y);
 	T getPixel(int x, int y);
 }

@@ -7,7 +7,6 @@ public class Brush implements Applicator
 	protected int color = 0x0;
 	protected BrushShape brushShape;
 	
-	//TODO: Create methods for blending
 	protected BlendType blendType;
 	public Brush()
 	{
@@ -29,7 +28,7 @@ public class Brush implements Applicator
 				pixel = blendType.blend(pixel, bitmap.getPixel(posX, posY));
 			}
 			
-			bitmap.setPixel(posX, posY, pixel);				
+			bitmap.setPixel(pixel, posX, posY);				
 		}
 	}
 	
@@ -42,6 +41,16 @@ public class Brush implements Applicator
 	public double x(){return this.x;}
 	public double y(){return this.y;}
 	
+	public void setShape(BrushShape bs)
+	{
+		this.brushShape = bs;
+	}
+	
+	public BrushShape getShape()
+	{
+		return this.brushShape;
+	}
+	
 	public void setColor(int color)
 	{
 		this.color = color;
@@ -52,9 +61,9 @@ public class Brush implements Applicator
 		return color;
 	}
 	
-	public void setShape(BrushShape bs)
+	public BlendType getBlendType()
 	{
-		this.brushShape = bs;
+		return this.blendType;
 	}
 	
 	public void setBlendType(BlendType bt)
