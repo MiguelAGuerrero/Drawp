@@ -35,7 +35,10 @@ public enum BlendType implements Blender<Integer>
 		this.bop = bop;
 	}
 	
-	public Integer blend(Integer srcPixelData, Integer destPixelData)
+	public Integer blend(Integer srcPixelData, 
+			Integer destPixelData, 
+			double srcBlendFactor, 
+			double destBlendFactor)
 	{
 		Pixel p1 = new Pixel(srcPixelData);
 		Pixel p2 = new Pixel(destPixelData);

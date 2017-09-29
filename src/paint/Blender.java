@@ -10,5 +10,5 @@ public interface Blender<T>
 	 * @param dest Value that exists
 	 * @return A value derived from an operation performed on t1 and t2
 	 */
-	public abstract T blend(T src, T dest);
+	T blend(T src, T dest, double srcBlendFactor, double destBlendFactor);
 }
