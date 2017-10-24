@@ -17,4 +17,24 @@ public class PixelTest
 		int pixelToInt = testPixel.toInt();
 		assertEquals(pixelToInt, pixelData);		
 	}
+	
+	@Test
+	public void testGetRValueFromPixel() 
+	{
+	}
+
+	@Test
+	public void testGetGValueFromPixel() 
+	{
+	}
+	
+	@Test
+	public void testGetBValueFromPixel() 
+	{
+	}
+	
+	@Test
+	public void testGetAValueFromPixel() 
+	{
+	}
 }

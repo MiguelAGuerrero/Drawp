@@ -25,7 +25,7 @@ public class Converter
 					int a = pixel >>> Pixel.ALPHA_BITPOSITION; //Alpha
 					int r = pixel >>> Pixel.RED_BITPOSITION; //Red
 					int g = pixel >>> Pixel.GREEN_BITPOSITION; //Green
-					out.write(a);
+					//out.write(a);
 					out.write(pixel);
 					out.write(g);
 					out.write(r);

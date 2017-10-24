@@ -38,8 +38,8 @@ public class Particles extends Pattern
 	
 	private void addAttractor()
 	{
-		double radius = 200;
-		double strength = 0.25;
+		double radius = 100;
+		double strength = -1;
 		ForceField a = new ForceField(radius, strength);
 		ForceField b = new ForceField(radius, strength);
 		a.setPosition(canvas.WIDTH / 3, canvas.HEIGHT / 2);

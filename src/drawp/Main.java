@@ -1,4 +1,6 @@
 package drawp;
+import java.util.ArrayList;
+
 import paint.Brush;
 import paint.BrushShape;
 import paint.Canvas;
@@ -36,12 +38,18 @@ public class Main
 		
 		b.setShape(bs);
 		
-		int color = 0xFF000000;
+		int color = 0x0000FF;
 		a.setColor(color);
 		b.setColor(color);
 		
 		Canvas c = new Canvas(cSize);
-		Brush[] brushArray = {a, a, a, a, a, a, a, a, a, a, a, a, a, a, a};
+		ArrayList<Brush> brushes = new ArrayList<>();
+		int num_brushes = 80;
+		Brush[] brushArray = new Brush[num_brushes];
+		for(int i = 0; i < num_brushes; i++){
+			brushArray[i] = a;
+		}
+		
 		Pattern p = new Particles(c, brushArray, 1000);
 		new Thread(p).start();
 	}
