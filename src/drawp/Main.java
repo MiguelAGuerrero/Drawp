@@ -36,21 +36,13 @@ public class Main
 		
 		b.setShape(bs);
 		
-		int color = 0x00FF00FF;
+		int color = 0xFF000000;
 		a.setColor(color);
 		b.setColor(color);
 		
 		Canvas c = new Canvas(cSize);
-		Brush[] brushArray = {a};
-		Pattern p = new Test(c, brushArray);
+		Brush[] brushArray = {a, a, a, a, a, a, a, a, a, a, a, a, a, a, a};
+		Pattern p = new Particles(c, brushArray, 1000);
 		new Thread(p).start();
-		System.out.println("Completed: " + p.getClass().getSimpleName());
-	}
-	
-	public static void patterns()
-	{
-		//new Thread(new Spiral(new Canvas(cSize), a, b)).start();
-		//new Thread(new Burst(new Canvas(cSize), a)).start();
-		//new Thread(new Satellite(new Canvas(cSize), a)).start();
 	}
 }

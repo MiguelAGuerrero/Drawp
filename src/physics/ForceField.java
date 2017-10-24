@@ -2,8 +2,8 @@ package physics;
 
 public class ForceField extends Particle implements Force
 {
-	double forceRange;
-	double strength;
+	private double forceRange;
+	private double strength;
 	
 	public ForceField(double forceRange, double strength)
 	{

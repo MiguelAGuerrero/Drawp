@@ -1,46 +1,45 @@
 package drawp;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 import paint.Brush;
 import paint.Canvas;
 import physics.ForceField;
-import physics.Particle;
 import physics.ParticleSystem;
-import java.util.Random;
 
 public class Particles extends Pattern
 {
-	Collection<ParticleBrush> particleBrushes;
-	ParticleSystem system;
+	private Collection<ParticleBrush> particleBrushes;
+	private ParticleSystem system;
 	
-	public Particles(Canvas c, Brush... brushes)
+	public Particles(Canvas c, Brush[] brushes, int frames)
 	{
-		super(c, brushes);
-		particleBrushes = new LinkedList<>();
-		system = new ParticleSystem();
-	}
-
-	@Override
-	public void draw()
-	{
+		super(c, brushes, frames);
+		initParticleSystem();
 		registerParticleBrushes();
 		setupParticles();
 		addAttractor();
-		int iterations = 1000;
-		for(int i = 0; i < iterations; i++)
-		{
-			system.update();
-			applyBrushes();
-		}
+	}
+	
+	private void initParticleSystem()
+	{
+		this.particleBrushes = new ArrayList<>();
+		this.system = new ParticleSystem();
+	}
+	
+	@Override
+	public void draw()
+	{
+		system.update();
+		applyBrushes();
 	}
 	
 	private void addAttractor()
 	{
-		double radius = 100;
-		double strength = 0;
+		double radius = 200;
+		double strength = 0.25;
 		ForceField a = new ForceField(radius, strength);
 		ForceField b = new ForceField(radius, strength);
 		a.setPosition(canvas.WIDTH / 3, canvas.HEIGHT / 2);
@@ -53,9 +52,9 @@ public class Particles extends Pattern
 	{
 		for(Brush b: brushes)
 		{
-			ParticleBrush newParticle = new ParticleBrush(b);
-			particleBrushes.add(newParticle);
-			system.registerParticle(newParticle);
+			ParticleBrush pb = new ParticleBrush(b);
+			particleBrushes.add(pb);
+			system.registerParticle(pb);
 		}
 	}
 	
@@ -73,23 +72,18 @@ public class Particles extends Pattern
 		int cy = canvas.HEIGHT / 2;
 		int size = particleBrushes.size();
 		Iterator<ParticleBrush> itr = particleBrushes.iterator();
-		Random rand = new Random();
 		double interval = 360 / size;
-		double radius = 100;
+		double radius = 50;
 		for(int i = 0; i < size; i++)
 		{
 			ParticleBrush pb = itr.next();
-			double cosx = Math.cos(Math.toRadians(i * interval));
-			double siny =  Math.sin(Math.toRadians(i * interval));
+			double angrad = Math.toRadians(i * interval);
+			double cosx = Math.cos(angrad);
+			double siny =  Math.sin(angrad);
 			pb.setPosition(cx + radius * cosx, cy + radius * siny);
-			float f = 0.25f;
-			double eo = f + i % 2 * f;
-
+			pb.setVelocity(1, 0);
+			pb.setAngle(Math.toDegrees(angrad));
 		}
 	}
 	
-	private void setMotion(ParticleBrush pb)
-	{
-	
-	}
 }

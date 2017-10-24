@@ -9,12 +9,15 @@ public abstract class Pattern implements Runnable
 	protected Canvas canvas;
 	protected Brush[] brushes;
 	protected Converter converter;
+	protected int frames;
+	protected int curFrame = 0;
 	
-	public Pattern(Canvas c, Brush... brushes)
+	public Pattern(Canvas c, Brush[] brushes, int frames)
 	{
 		this.canvas = c;
 		this.brushes = brushes;
 		this.converter = new Converter(c);
+		this.frames = frames;
 	}
 
 	public abstract void draw();
@@ -22,7 +25,14 @@ public abstract class Pattern implements Runnable
 	@Override
 	public void run()
 	{
-		draw();
+		long start = System.currentTimeMillis();
+		for (; curFrame < frames; curFrame++)
+		{
+			draw();
+		}
+		long end = System.currentTimeMillis();
+		System.out.println("Completed: " + this.getClass().getSimpleName());
+		System.out.format("Time: %dms", end - start);
 		converter.convert(this.getClass().getSimpleName() + ".bmp");
 	}
 }
