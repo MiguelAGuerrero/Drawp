@@ -22,7 +22,7 @@ public class Brush implements Applicator
 		{
 			int posX = (int) (this.x + ap.x());
 			int posY = (int) (this.y + ap.y());
-			int pixel = (ap.intensity() << Pixel.ALPHA_BITPOSITION) & this.getColor();			
+			int pixel = (ap.intensity() << Pixel.ALPHA_BITPOSITION) | this.getColor();			
 			if(blendType != null)
 			{
 				//pixel = blendType.blend(pixel, bitmap.getPixel(posX, posY));

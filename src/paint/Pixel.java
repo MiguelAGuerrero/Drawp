@@ -6,17 +6,17 @@ package paint;
  */
 public class Pixel
 {
-	public static int ALPHA_BITPOSITION = 0;
-	public static int MASK_ALPHA = 0x000000FF;
+	public static int ALPHA_BITPOSITION = 24;
+	public static int MASK_ALPHA = 0xFF000000;
 	
-	public static int RED_BITPOSITION = 24;
-	public static int MASK_RED = 0xFF000000;
+	public static int RED_BITPOSITION = 16;
+	public static int MASK_RED = 0x00FF0000;
 	
-	public static int GREEN_BITPOSITION = 16;
-	public static int MASK_GREEN = 0x00FF0000;
+	public static int GREEN_BITPOSITION = 8;
+	public static int MASK_GREEN = 0xFF00;
 
-	public static int BLUE_BITPOSITION = 8;
-	public static int MASK_BLUE = 0x0000FF00;
+	public static int BLUE_BITPOSITION = 0;
+	public static int MASK_BLUE = 0xFF;
 	
 	public static int getAValue(int packedARGBVal){ return (packedARGBVal & MASK_ALPHA) >>> ALPHA_BITPOSITION;}
 	public static int getRValue(int packedARGBVal){ return (packedARGBVal & MASK_RED) >>> RED_BITPOSITION;}

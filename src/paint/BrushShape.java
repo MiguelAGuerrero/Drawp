@@ -7,7 +7,7 @@ import java.util.TreeSet;
 public class BrushShape implements Iterable<ApplicationPoint>
 {
 	private static BrushShape pointPen;
-	private static int MAX_INTENSITY = 255;
+	private static int MAX_INTENSITY = 0;
 	
 	public static BrushShape pixelPointPen()
 	{
@@ -57,7 +57,7 @@ public class BrushShape implements Iterable<ApplicationPoint>
 		public ApplicationPointImpl(double x, double y, int intensity)
 		{
 			this(x, y);
-			this.intensity = intensity % MAX_INTENSITY;
+			this.intensity = intensity;
 		}
 
 		@Override

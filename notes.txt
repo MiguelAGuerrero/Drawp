@@ -11,5 +11,3 @@ If the function is transcendental, however there may or may not be a proper tran
 
 The purpose of defining a relationship between mathematical functions and physical attributes is to make particle systems
 mathematically defined as well.
-   
-  
