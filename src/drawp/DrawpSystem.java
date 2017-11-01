@@ -4,7 +4,7 @@ import paint.Brush;
 import paint.Canvas;
 import paint.Converter;
 
-public abstract class Pattern implements Runnable
+public abstract class DrawpSystem implements Runnable
 {
 	protected Canvas canvas;
 	protected Brush[] brushes;
@@ -12,7 +12,7 @@ public abstract class Pattern implements Runnable
 	protected int frames;
 	protected int curFrame = 0;
 	
-	public Pattern(Canvas c, Brush[] brushes, int frames)
+	public DrawpSystem(Canvas c, Brush[] brushes, int frames)
 	{
 		this.canvas = c;
 		this.brushes = brushes;

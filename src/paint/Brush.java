@@ -5,14 +5,14 @@ public class Brush implements Applicator
 	protected double x;
 	protected double y;
 	protected int color = 0x0;
-	protected BrushShape brushShape;
+	protected BrushShapeImpl brushShape;
 	
 	protected BlendType blendType;
 	public Brush()
 	{
 		this.x = 0;
 		this.y = 0;
-		this.brushShape = BrushShape.pixelPointPen();
+		this.brushShape = BrushShapeImpl.pixelPointPen();
 	}
 
 	@Override
@@ -22,7 +22,8 @@ public class Brush implements Applicator
 		{
 			int posX = (int) (this.x + ap.x());
 			int posY = (int) (this.y + ap.y());
-			int pixel = (ap.intensity() << Pixel.ALPHA_BITPOSITION) | this.getColor();			
+			int pixel = (ap.intensity() << Pixel.ALPHA_BITPOSITION) | this.getColor();	
+			
 			if(blendType != null)
 			{
 				//pixel = blendType.blend(pixel, bitmap.getPixel(posX, posY));
@@ -41,12 +42,12 @@ public class Brush implements Applicator
 	public double x(){return this.x;}
 	public double y(){return this.y;}
 	
-	public void setShape(BrushShape bs)
+	public void setShape(BrushShapeImpl bs)
 	{
 		this.brushShape = bs;
 	}
 	
-	public BrushShape getShape()
+	public BrushShapeImpl getShape()
 	{
 		return this.brushShape;
 	}

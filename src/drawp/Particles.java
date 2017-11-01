@@ -9,7 +9,7 @@ import paint.Canvas;
 import physics.ForceField;
 import physics.ParticleSystem;
 
-public class Particles extends Pattern
+public class Particles extends DrawpSystem
 {
 	private Collection<ParticleBrush> particleBrushes;
 	private ParticleSystem system;
@@ -38,8 +38,8 @@ public class Particles extends Pattern
 	
 	private void addAttractor()
 	{
-		double radius = 100;
-		double strength = 1;
+		double radius = 200;
+		double strength = 2;
 		ForceField a = new ForceField(radius, strength);
 		ForceField b = new ForceField(radius, strength);
 		a.setPosition(canvas.WIDTH / 3, canvas.HEIGHT / 2);
@@ -81,8 +81,9 @@ public class Particles extends Pattern
 			double cosx = Math.cos(angrad);
 			double siny =  Math.sin(angrad);
 			pb.setPosition(cx + radius * cosx, cy + radius * siny);
-			pb.setVelocity(1, 0);
+			pb.setVelocity(0.5, 0);
 			pb.setAngle(Math.toDegrees(angrad));
+			pb.setAngularAcceleration(0.005);
 		}
 	}
 	

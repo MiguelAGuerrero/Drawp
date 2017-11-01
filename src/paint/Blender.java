@@ -9,7 +9,8 @@ public interface Blender<T>
 	 * @param dest Value that exists
 	 * @return A value derived from an operation performed on t1 and t2
 	 */
+	
 	T blend(T src, T dest);
-	public void setSrcBlendFactor(double blendFactor);
-	public void setDestBlendFactor(double blendFactor);
+	void setSrcBlendFactor(double blendFactor);
+	void setDestBlendFactor(double blendFactor);
 }

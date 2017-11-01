@@ -7,7 +7,9 @@ import java.util.Iterator;
 import paint.Applicator;
 import paint.Bitmap;
 
-public class CompositeParticleBrush extends ParticleBrush implements Applicator, Iterable<ParticleBrush>
+public class CompositeParticleBrush 
+extends ParticleBrush 
+implements Iterable<ParticleBrush>
 {
 	private Collection<ParticleBrush> brushes;
 	
@@ -35,13 +37,16 @@ public class CompositeParticleBrush extends ParticleBrush implements Applicator,
 	
 	public void move()
 	{
+		super.move();
+		
+		//Translate particle brushes based on the movement of the 
+		//center brush
 		for(ParticleBrush pb: brushes)
 		{
 			pb.setPosition(pb.getX() + getVelocityX(), 
 					pb.getY() + getVelocityY());
 		}
 		
-		super.move();
 	}
 	
 	@Override
