@@ -1,9 +1,11 @@
-package drawp;
+package examples;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import drawp.DrawpSystem;
+import drawp.ParticleBrush;
 import paint.Brush;
 import paint.Canvas;
 import physics.ForceField;
