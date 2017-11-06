@@ -1,5 +1,7 @@
 package drawp;
 
+import java.awt.geom.AffineTransform;
+
 import paint.Brush;
 import paint.Canvas;
 import paint.Converter;
@@ -12,14 +14,22 @@ public abstract class DrawpSystem implements Runnable
 	protected int frames;
 	protected int curFrame = 0;
 	
-	public DrawpSystem(Canvas c, Brush[] brushes, int frames)
+	public DrawpSystem(Canvas c, Brush[] brushes)
 	{
 		this.canvas = c;
 		this.brushes = brushes;
 		this.converter = new Converter(c);
-		this.frames = frames;
 	}
 
+	/**
+	 * Updates the particle system by one frame. 
+	 */
+	public abstract void update();
+	
+	/**
+	 * Applies particle brushes in system to 
+	 * a canvas
+	 */
 	public abstract void draw();
 	
 	@Override
@@ -28,6 +38,7 @@ public abstract class DrawpSystem implements Runnable
 		long start = System.currentTimeMillis();
 		for (; curFrame < frames; curFrame++)
 		{
+			update();
 			draw();
 		}
 		long end = System.currentTimeMillis();
@@ -36,3 +47,4 @@ public abstract class DrawpSystem implements Runnable
 		converter.convert(this.getClass().getSimpleName() + ".bmp");
 	}
 }
+

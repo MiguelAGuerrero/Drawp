@@ -16,9 +16,9 @@ public class Particles extends DrawpSystem
 	private Collection<ParticleBrush> particleBrushes;
 	private ParticleSystem system;
 	
-	public Particles(Canvas c, Brush[] brushes, int frames)
+	public Particles(Canvas c, Brush[] brushes)
 	{
-		super(c, brushes, frames);
+		super(c, brushes);
 		initParticleSystem();
 		registerParticleBrushes();
 		setupParticles();
@@ -32,9 +32,14 @@ public class Particles extends DrawpSystem
 	}
 	
 	@Override
-	public void draw()
+	public void update()
 	{
 		system.update();
+	}
+	
+	@Override
+	public void draw()
+	{
 		applyBrushes();
 	}
 	

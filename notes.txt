@@ -1,13 +1,3 @@
 The motion of a particle can be defined using piecewise functions
 If the function is elementary, it can be translated to represent kinematic attributes of the function 
    The result will be an arbitrary polynomial
-
-If the function is transcendental, however there may or may not be a proper translation to physical attributes.
-   I still need to convince myself of this
-   I believe it may be true, since one can arbitrarily change the physical constants of a particle to follow
-   any arbitrary path.
-   Whether these "arbitrary" changes can be mapped to specific transcendental functions is unknown to me
-   If I can at least find a mapping to trigonometric functions, then I may be satsified with just that
-
-The purpose of defining a relationship between mathematical functions and physical attributes is to make particle systems
-mathematically defined as well.
