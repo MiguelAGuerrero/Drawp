@@ -1,7 +1,12 @@
 package paint;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
+
+import javax.imageio.ImageIO;
 
 /**
  * Canvas represents a primitive bitmap. 
@@ -26,8 +31,8 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 	/**
 	 * Storage container for the pixels of the canvas
 	 */
-	private int[][] pixmap;
-
+	private BufferedImage pixmap;
+	
 	public Canvas(int width, int height)
 	{
 		this.WIDTH = width;
@@ -37,7 +42,7 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 
 	private void initPixmap()
 	{
-		pixmap = new int[WIDTH][HEIGHT];
+		pixmap = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
 		fill(0xFFFFFFFF);
 	}
 	
@@ -51,7 +56,7 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 	{
 		if(inBounds(x, y))
 		{
-			pixmap[x][y] = pixelData;
+			pixmap.setRGB(x, y, pixelData);
 			return true;
 		}
 
@@ -60,11 +65,11 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 
 	public Integer getPixel(int x, int y)
 	{
-		if(inBounds(x, y)){ return pixmap[x][y]; }
+		if(inBounds(x, y)){ return pixmap.getRGB(x, y);}
 		else return null;
 	}
 
-	public int[][] getPixels(){ return pixmap; }
+	public int[] getPixels(){ return pixmap.getRGB(0, 0, WIDTH, HEIGHT, null, 0, 1); }
 
 	private boolean inBounds(int x, int y)
 	{
@@ -76,10 +81,9 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 
 	public void fill(Integer pixel)
 	{
-		for(int[] row : pixmap)
-		{
-			Arrays.fill(row, pixel);
-		}
+		for(int i = 0; i < WIDTH; i++)
+			for(int j = 0; j < HEIGHT; j++)
+				this.pixmap.setRGB(i, j, pixel);
 	}
 
 	@Override
@@ -100,7 +104,7 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 		@Override
 		public Integer next() 
 		{
-			Integer pixel = pixmap[row][column];
+			Integer pixel = pixmap.getRGB(row, column);
 			moveToNextPosition();
 			return pixel;
 		}
@@ -110,6 +114,19 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 			curPixelPos++;
 			column = (column + 1) % WIDTH;
 			row = curPixelPos % WIDTH;
+		}
+	}
+	
+	public void save(String path)
+	{
+		try 
+		{
+			ImageIO.write(pixmap, "jpeg", new File(path + ".jpg"));
+		} 
+		
+		catch (IOException e) 
+		{
+			e.printStackTrace();
 		}
 	}
 }

@@ -5,7 +5,7 @@ public class Brush implements Applicator
 	protected double x;
 	protected double y;
 	protected int color = 0x0;
-	protected BrushShapeImpl brushShape;
+	protected BrushShape brushShape;
 	
 	protected BlendType blendType;
 	public Brush()
@@ -42,12 +42,12 @@ public class Brush implements Applicator
 	public double x(){return this.x;}
 	public double y(){return this.y;}
 	
-	public void setShape(BrushShapeImpl bs)
+	public void setShape(BrushShape bs)
 	{
 		this.brushShape = bs;
 	}
 	
-	public BrushShapeImpl getShape()
+	public BrushShape getShape()
 	{
 		return this.brushShape;
 	}

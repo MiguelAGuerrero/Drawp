@@ -46,7 +46,7 @@ public class Particles extends DrawpSystem
 	private void addAttractor()
 	{
 		double radius = 200;
-		double strength = 2;
+		double strength = 1;
 		ForceField a = new ForceField(radius, strength);
 		ForceField b = new ForceField(radius, strength);
 		a.setPosition(canvas.WIDTH / 3, canvas.HEIGHT / 2);

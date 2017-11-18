@@ -14,6 +14,16 @@ public class ParticleSystem
 		forces = new ArrayList<>();
 	}
 	
+	public Collection<Particle> getParticles()
+	{
+		return this.particles;
+	}
+	
+	public Collection<Force> getForces()
+	{
+		return this.forces;
+	}
+	
 	public void registerParticle(Particle p)
 	{
 		particles.add(p);
