@@ -61,21 +61,23 @@ public class CanvasTest
 	@Test
 	public void testSetPixelInBounds()
 	{
-		assertTrue(testCanvas.setPixel(xIn, yIn, testPixel));
+		System.out.println(yIn);
+		assertTrue(testCanvas.setPixel(testPixel, xIn, yIn));
 	}
 
 	@Test
 	public void testSetPixelOutOfBounds()
 	{
-		assertFalse(testCanvas.setPixel(xOut, yOut, testPixel));
+		assertFalse(testCanvas.setPixel(testPixel, xOut, yOut));
 	}
 
 	@Test
 	public void testFill()
 	{
 		testCanvas.fill(testPixel);
-		for(int pixel: testCanvas)
-			if(pixel != testPixel) 
-				fail();
+		for(int i = 0; i < testCanvas.HEIGHT; i++)
+			for(int j = 0; j < testCanvas.WIDTH; j++)
+				if(testCanvas.getPixel(i, j) != testPixel)
+					fail();
 	}
 }

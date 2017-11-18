@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
  * @author Miguel Guerrero
  */
 
-public class Canvas implements Bitmap, Iterable<Integer>
+public class Canvas implements Bitmap
 {
 
 	/**
@@ -67,7 +67,7 @@ public class Canvas implements Bitmap, Iterable<Integer>
 	{
 		if(inBounds(x, y)) 
 			return pixmap.getRGB(x, y);
-		return 0;
+		return -1;
 	}
 
 	public int[] getPixels(){ return pixmap.getRGB(0, 0, WIDTH, HEIGHT, null, 0, 1); }
@@ -84,41 +84,7 @@ public class Canvas implements Bitmap, Iterable<Integer>
 	{
 		for(int i = 0; i < WIDTH; i++)
 			for(int j = 0; j < HEIGHT; j++)
-			{
 				this.pixmap.setRGB(i, j, pixel);
-			}
-	}
-
-	@Override
-	public Iterator<Integer> iterator(){ return new CanvasIterator(); }
-
-	private class CanvasIterator implements Iterator<Integer>
-	{
-		private int curPixelPos = 0;
-		private int row = 0;
-		private int column = 0;
-
-		@Override
-		public boolean hasNext() 
-		{
-			System.out.println("Row: " + row + " Column: " + column);
-			return row < HEIGHT && column < WIDTH;
-		}
-
-		@Override
-		public Integer next() 
-		{
-			Integer pixel = pixmap.getRGB(row, column);
-			moveToNextPosition();
-			return pixel;
-		}
-
-		private void moveToNextPosition()
-		{
-			curPixelPos++;
-			column = (column + 1) % WIDTH;
-			row = curPixelPos % WIDTH;
-		}
 	}
 	
 	public void save(String path)
