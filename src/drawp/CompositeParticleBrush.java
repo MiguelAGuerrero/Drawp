@@ -30,7 +30,7 @@ implements Iterable<ParticleBrush>
 	}
 	
 	@Override
-	public void apply(Bitmap<Integer> b)
+	public void apply(Bitmap b)
 	{
 		for(ParticleBrush pb: brushes) { pb.apply(b); }
 	}

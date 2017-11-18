@@ -48,7 +48,7 @@ public class CanvasTest
 	{
 		int pixel = 0x0;
 		testCanvas.setPixel(xIn, yIn, pixel);
-		assertEquals(testCanvas.getPixel(xIn, yIn), (Integer) pixel);
+		assertEquals(testCanvas.getPixel(xIn, yIn),  pixel);
 	}
 
 	@Test
@@ -74,12 +74,8 @@ public class CanvasTest
 	public void testFill()
 	{
 		testCanvas.fill(testPixel);
-		for(Integer pixel: testCanvas)
-		{
-			if(pixel != testPixel)
-			{
+		for(int pixel: testCanvas)
+			if(pixel != testPixel) 
 				fail();
-			}
-		}
 	}
 }

@@ -5,8 +5,8 @@ package paint;
  * @author Miguel Guerrero
  * @param <T> Type representation of a pixel
  */
-public interface Bitmap<T>
+public interface Bitmap
 {
-	boolean setPixel(T pixel, int x, int y);
-	T getPixel(int x, int y);
+	boolean setPixel(int pixel, int x, int y);
+	int getPixel(int x, int y);
 }

@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
  * @author Miguel Guerrero
  */
 
-public class Canvas implements Bitmap<Integer>, Iterable<Integer>
+public class Canvas implements Bitmap, Iterable<Integer>
 {
 
 	/**
@@ -52,7 +52,7 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 	 */
 	public Canvas(int size) { this(size, size); }
 
-	public boolean setPixel(Integer pixelData, int x, int y)
+	public boolean setPixel(int pixelData, int x, int y)
 	{
 		if(inBounds(x, y))
 		{
@@ -63,10 +63,11 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 		else return false;
 	}
 
-	public Integer getPixel(int x, int y)
+	public int getPixel(int x, int y)
 	{
-		if(inBounds(x, y)){ return pixmap.getRGB(x, y);}
-		else return null;
+		if(inBounds(x, y)) 
+			return pixmap.getRGB(x, y);
+		return 0;
 	}
 
 	public int[] getPixels(){ return pixmap.getRGB(0, 0, WIDTH, HEIGHT, null, 0, 1); }
@@ -79,11 +80,13 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 				&& y < this.HEIGHT;
 	}
 
-	public void fill(Integer pixel)
+	public void fill(int pixel)
 	{
 		for(int i = 0; i < WIDTH; i++)
 			for(int j = 0; j < HEIGHT; j++)
+			{
 				this.pixmap.setRGB(i, j, pixel);
+			}
 	}
 
 	@Override
@@ -98,6 +101,7 @@ public class Canvas implements Bitmap<Integer>, Iterable<Integer>
 		@Override
 		public boolean hasNext() 
 		{
+			System.out.println("Row: " + row + " Column: " + column);
 			return row < HEIGHT && column < WIDTH;
 		}
 

@@ -8,6 +8,7 @@ import physics.Particle;
 public class ParticleBrush extends Particle implements Applicator
 {
 	private Brush brush;
+	
 	public ParticleBrush()
 	{
 		this.brush = new Brush();
@@ -19,7 +20,7 @@ public class ParticleBrush extends Particle implements Applicator
 	}
 	
 	@Override
-	public void apply(Bitmap<Integer> b)
+	public void apply(Bitmap b)
 	{
 		brush.moveTo(getX(), getY());
 		brush.apply(b);
