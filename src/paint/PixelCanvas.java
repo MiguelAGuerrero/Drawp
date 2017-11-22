@@ -9,9 +9,8 @@ import java.util.Iterator;
 import javax.imageio.ImageIO;
 
 /**
- * Canvas represents a primitive bitmap. 
- * Stores pixels as primitive integers in a 2D array, whose position is 1 : 1
- * to their index in the array.
+ * PixelCanvas represents a primitive pixmap. 
+ * Stores pixels using a BufferedImage
  * @author Miguel Guerrero
  */
 
