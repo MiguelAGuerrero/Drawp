@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import physics.Particle;
+
+import particle.Particle;
+
 import java.util.function.Consumer;
 import java.util.function.Supplier; 
 

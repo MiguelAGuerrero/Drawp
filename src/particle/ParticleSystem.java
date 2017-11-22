@@ -1,4 +1,4 @@
-package physics;
+package particle;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,13 +47,10 @@ public class ParticleSystem
 	public void update()
 	{
 		for(Force f: forces)
-		{
 			for(Particle p: particles)
-			{
 				f.applyForce(p);
-			}
-		}
 	
-		for(Particle p: particles) { p.move(); }
+		for(Particle p: particles)
+			p.move();
 	}
 }

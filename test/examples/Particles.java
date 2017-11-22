@@ -1,5 +1,6 @@
 package examples;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -7,18 +8,18 @@ import java.util.Iterator;
 import drawp.DrawpSystem;
 import drawp.ParticleBrush;
 import paint.Brush;
-import paint.Canvas;
-import physics.ForceField;
-import physics.ParticleSystem;
+import paint.PixelCanvas;
+import particle.ForceField;
+import particle.ParticleSystem;
 
 public class Particles extends DrawpSystem
 {
 	private Collection<ParticleBrush> particleBrushes;
 	private ParticleSystem system;
 	
-	public Particles(Canvas c, Brush[] brushes)
+	public Particles(PixelCanvas c, Brush[] brushes, int iterations)
 	{
-		super(c, brushes);
+		super(c, brushes, iterations);
 		initParticleSystem();
 		registerParticleBrushes();
 		setupParticles();
@@ -46,7 +47,7 @@ public class Particles extends DrawpSystem
 	private void addAttractor()
 	{
 		double radius = 200;
-		double strength = 1;
+		double strength = 0;
 		ForceField a = new ForceField(radius, strength);
 		ForceField b = new ForceField(radius, strength);
 		a.setPosition(canvas.WIDTH / 3, canvas.HEIGHT / 2);
@@ -68,9 +69,7 @@ public class Particles extends DrawpSystem
 	private void applyBrushes()
 	{
 		for(ParticleBrush pb: particleBrushes)
-		{
 			pb.apply(canvas);
-		}
 	}
 	
 	private void setupParticles()
@@ -80,7 +79,7 @@ public class Particles extends DrawpSystem
 		int size = particleBrushes.size();
 		Iterator<ParticleBrush> itr = particleBrushes.iterator();
 		double interval = 360 / size;
-		double radius = 50;
+		double radius = 200;
 		for(int i = 0; i < size; i++)
 		{
 			ParticleBrush pb = itr.next();
@@ -90,8 +89,13 @@ public class Particles extends DrawpSystem
 			pb.setPosition(cx + radius * cosx, cy + radius * siny);
 			pb.setVelocity(0.5, 0);
 			pb.setAngle(Math.toDegrees(angrad));
-			pb.setAngularAcceleration(0.005);
+			pb.setAngularVelocity(0.12);
 		}
 	}
-	
+
+	@Override
+	public BufferedImage getImage()
+	{
+		return this.canvas.getImage();
+	}	
 }

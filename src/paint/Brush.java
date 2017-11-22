@@ -2,12 +2,12 @@ package paint;
 
 public class Brush implements Applicator
 {	
-	protected double x;
-	protected double y;
-	protected int color = 0x0;
-	protected BrushShape brushShape;
+	private double x;
+	private double y;
+	private int color = 0x0;
+	private BrushShape brushShape;
+	private BlendType blendType;
 	
-	protected BlendType blendType;
 	public Brush()
 	{
 		this.x = 0;
@@ -16,12 +16,12 @@ public class Brush implements Applicator
 	}
 
 	@Override
-	public void apply(Bitmap bitmap)
+	public void apply(Pixmap bitmap)
 	{
 		for(ApplicationPoint ap: brushShape)
 		{
-			int posX = (int) (this.x + ap.x());
-			int posY = (int) (this.y + ap.y());
+			int posX = (int) (this.x + ap.getX());
+			int posY = (int) (this.y + ap.getY());
 			int pixel = (ap.intensity() << Pixel.ALPHA_BITPOSITION) | this.getColor();
 			
 			if(blendType != null)
@@ -39,8 +39,8 @@ public class Brush implements Applicator
 		this.y = y;
 	}
 	
-	public double x(){return this.x;}
-	public double y(){return this.y;}
+	public double x(){ return this.x; }
+	public double y(){ return this.y; }
 	
 	public void setShape(BrushShape bs)
 	{

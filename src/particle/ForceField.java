@@ -1,4 +1,4 @@
-package physics;
+package particle;
 
 public class ForceField extends Particle implements Force
 {

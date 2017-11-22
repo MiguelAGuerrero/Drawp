@@ -15,11 +15,11 @@ import javax.imageio.ImageIO;
  * @author Miguel Guerrero
  */
 
-public class Canvas implements Bitmap
+public class PixelCanvas implements Pixmap
 {
 
 	/**
-	 * Width of the Canvas
+	 * Width of the canvas
 	 */
 	public final int WIDTH;
 
@@ -33,7 +33,7 @@ public class Canvas implements Bitmap
 	 */
 	private BufferedImage pixmap;
 	
-	public Canvas(int width, int height)
+	public PixelCanvas(int width, int height)
 	{
 		this.WIDTH = width;
 		this.HEIGHT = height;
@@ -50,7 +50,7 @@ public class Canvas implements Bitmap
 	 * Constructs a square canvas with the provided size
 	 * @param size The length of the canvas in terms of pixels
 	 */
-	public Canvas(int size) { this(size, size); }
+	public PixelCanvas(int size) { this(size, size); }
 
 	public boolean setPixel(int pixelData, int x, int y)
 	{
@@ -91,12 +91,18 @@ public class Canvas implements Bitmap
 	{
 		try 
 		{
-			ImageIO.write(pixmap, "jpeg", new File(path + ".jpg"));
+			ImageIO.write(pixmap, "png", new File(path + ".png"));
+			System.out.println("SAVED");
 		} 
 		
-		catch (IOException e) 
+		catch(IOException e) 
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public BufferedImage getImage()
+	{
+		return pixmap;
 	}
 }

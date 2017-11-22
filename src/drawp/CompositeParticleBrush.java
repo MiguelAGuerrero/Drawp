@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import paint.Applicator;
-import paint.Bitmap;
+import paint.Pixmap;
 
 public class CompositeParticleBrush 
 extends ParticleBrush 
@@ -30,7 +30,7 @@ implements Iterable<ParticleBrush>
 	}
 	
 	@Override
-	public void apply(Bitmap b)
+	public void apply(Pixmap b)
 	{
 		for(ParticleBrush pb: brushes) { pb.apply(b); }
 	}

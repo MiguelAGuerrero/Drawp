@@ -2,5 +2,5 @@ package paint;
 
 public interface Applicator
 {
-	void apply(Bitmap b);
+	void apply(Pixmap b);
 }

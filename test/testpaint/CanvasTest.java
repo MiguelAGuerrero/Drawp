@@ -8,11 +8,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import paint.Canvas;
+import paint.PixelCanvas;
 
 public class CanvasTest 
 {
-	Canvas testCanvas;
+	PixelCanvas testCanvas;
 
 	/**
 	 * Represents x and y values within and outside the bounds
@@ -32,7 +32,7 @@ public class CanvasTest
 	public void initValues()
 	{
 		int size = 10;
-		testCanvas = new Canvas(size);
+		testCanvas = new PixelCanvas(size);
 		xIn = 0;
 		yIn = 0;
 		xOut = testCanvas.WIDTH;
@@ -61,7 +61,6 @@ public class CanvasTest
 	@Test
 	public void testSetPixelInBounds()
 	{
-		System.out.println(yIn);
 		assertTrue(testCanvas.setPixel(testPixel, xIn, yIn));
 	}
 

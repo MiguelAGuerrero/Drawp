@@ -1,19 +1,22 @@
 package drawp;
 
+import java.awt.image.BufferedImage;
+
 import paint.Brush;
-import paint.Canvas;
+import paint.PixelCanvas;
 
 public abstract class DrawpSystem implements Runnable
 {
-	protected Canvas canvas;
+	protected PixelCanvas canvas;
 	protected Brush[] brushes;
 	protected int frames;
 	protected int curFrame = 0;
 	
-	public DrawpSystem(Canvas c, Brush[] brushes)
+	public DrawpSystem(PixelCanvas c, Brush[] brushes, int iterations)
 	{
 		this.canvas = c;
 		this.brushes = brushes;
+		this.frames = iterations;
 	}
 
 	/**
@@ -26,6 +29,8 @@ public abstract class DrawpSystem implements Runnable
 	 * a canvas
 	 */
 	public abstract void draw();
+	
+	public abstract BufferedImage getImage();
 	
 	@Override
 	public void run()
@@ -40,7 +45,7 @@ public abstract class DrawpSystem implements Runnable
 		
 		long end = System.currentTimeMillis();
 		System.out.println("Completed: " + this.getClass().getSimpleName());
-		System.out.format("Time: %dms", end - start);
+		System.out.println(String.format("Time: %dms", end - start));
 		canvas.save(this.getClass().getSimpleName());
 	}
 }

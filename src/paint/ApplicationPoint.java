@@ -2,7 +2,7 @@ package paint;
 
 public interface ApplicationPoint extends Comparable<ApplicationPoint>
 {
-	public double x();
-	public double y();
+	public double getX();
+	public double getY();
 	public int intensity();
 }

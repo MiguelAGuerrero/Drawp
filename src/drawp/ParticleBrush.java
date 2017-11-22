@@ -1,9 +1,9 @@
 package drawp;
 
 import paint.Applicator;
-import paint.Bitmap;
+import paint.Pixmap;
 import paint.Brush;
-import physics.Particle;
+import particle.Particle;
 
 public class ParticleBrush extends Particle implements Applicator
 {
@@ -20,7 +20,7 @@ public class ParticleBrush extends Particle implements Applicator
 	}
 	
 	@Override
-	public void apply(Bitmap b)
+	public void apply(Pixmap b)
 	{
 		brush.moveTo(getX(), getY());
 		brush.apply(b);
