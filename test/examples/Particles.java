@@ -8,7 +8,7 @@ import java.util.Iterator;
 import drawp.DrawpSystem;
 import drawp.ParticleBrush;
 import paint.Brush;
-import paint.PixelCanvas;
+import paint.PaintCanvas;
 import particle.ForceField;
 import particle.ParticleSystem;
 
@@ -17,7 +17,7 @@ public class Particles extends DrawpSystem
 	private Collection<ParticleBrush> particleBrushes;
 	private ParticleSystem system;
 	
-	public Particles(PixelCanvas c, Brush[] brushes, int iterations)
+	public Particles(PaintCanvas c, Brush[] brushes, int iterations)
 	{
 		super(c, brushes, iterations);
 		initParticleSystem();
@@ -46,14 +46,17 @@ public class Particles extends DrawpSystem
 	
 	private void addAttractor()
 	{
-		double radius = 200;
-		double strength = 0;
+		double radius = 1000;
+		double strength = -0.1;
 		ForceField a = new ForceField(radius, strength);
-		ForceField b = new ForceField(radius, strength);
-		a.setPosition(canvas.WIDTH / 3, canvas.HEIGHT / 2);
-		b.setPosition(2 * canvas.WIDTH / 3, canvas.HEIGHT / 2);
-		system.registerForce(a); 
-		system.registerForce(b);
+		ForceField b = new ForceField(100, -100);
+		a.setPosition(canvas.WIDTH / 2, canvas.HEIGHT / 2);
+		b.setPosition(canvas.WIDTH / 2, canvas.HEIGHT / 2);
+		b.setAngularVelocity(1);
+		b.setVelocity(10, 0);
+		//system.registerForce(a); 
+		//system.registerForce(b); 
+
 	}
 	
 	private void registerParticleBrushes()
@@ -78,18 +81,18 @@ public class Particles extends DrawpSystem
 		int cy = canvas.HEIGHT / 2;
 		int size = particleBrushes.size();
 		Iterator<ParticleBrush> itr = particleBrushes.iterator();
-		double interval = 360 / size;
-		double radius = 200;
+		double interval = 2 * Math.PI / size;
+		double radius = 100;
 		for(int i = 0; i < size; i++)
 		{
 			ParticleBrush pb = itr.next();
-			double angrad = Math.toRadians(i * interval);
+			double angrad = i * interval;
 			double cosx = Math.cos(angrad);
 			double siny =  Math.sin(angrad);
 			pb.setPosition(cx + radius * cosx, cy + radius * siny);
-			pb.setVelocity(0.5, 0);
+			pb.setVelocity(0.2, 0);
 			pb.setAngle(Math.toDegrees(angrad));
-			pb.setAngularVelocity(0.12);
+			pb.setAngularVelocity(0.1);
 		}
 	}
 

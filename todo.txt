@@ -1,0 +1,39 @@
+Paint
+   Blending
+      - Blending should achieve visual effects by combining, or "blending" two pixels together to form a new one
+      - Implement the standard blending algorithms (Adding, Multiplication, Subtraction, etc.)
+      
+   Brush Shapes
+      - Brush shapes should define the points in 2D space where pixels are applied
+      
+   Application
+      - The application of a brush should produce pixels onto a pixmap
+      - Interpolation
+        - Brushes that are displaced more than 1 pixel per update will not produce a continuous flow of pixels. Instead, they will
+          jump and create gaps of whitespace
+        - This can be addressed by either:
+            - Normalizing the physical parameters of the particle such that they will always be displaced by 1 pixel,
+              and by pe forming multiple update / paint cycles up to the amount 
+            - Normalizing the entire particle system such that all the particles move relative to each other, where the fastest particle moves 1 pixel per update,
+              and percieved speed can be adjusted for alterting the entire DrawpSystem's update / draw cycles.
+       
+Physics
+   Particles
+      - A particle represents a moveable unit in 2D space.
+      - Particles should be able to move continuously
+   
+Drawp
+   Visualization
+      - The user should be able to see the drawing process as the particle's move
+      
+   Scripting
+      - Scripting should provide a high level way of interacting with the Drawp API. This way, Java syntax
+        can be abstracted away.
+      - Implement a small set of scripting commands to interact with the Drawp API using Python.
+      
+   GUI
+      - The GUI would provide a visual way of creating, implementing, and running Drawp Systems.
+      - Implement a GUI application that allows for 
+      
+-------------
+-------------

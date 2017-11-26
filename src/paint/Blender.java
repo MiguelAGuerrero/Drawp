@@ -5,12 +5,12 @@ public interface Blender<T>
 	/***
 	 * The Blender interface contracts implementors
 	 * to derive a value from two values of the same type.
-	 * @param srcA Source 1
-	 * @param srcB Source 2
-	 * @return A value derived from an operation performed on t1 and t2
+	 * @param src 
+	 * @param dest 
+	 * @return A value derived from an operation performed on the src and dest
 	 */
 	
-	T blend(T srcA, T srcB);
+	T blend(T src, T dest);
 	void setSrcBlendFactor(double blendFactor);
 	void setDestBlendFactor(double blendFactor);
 }

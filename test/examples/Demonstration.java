@@ -1,9 +1,11 @@
 package examples;
 
+import java.awt.Color;
+
 import drawp.DrawpSystemDisplay;
 import paint.Brush;
 import paint.BrushShapeImpl;
-import paint.PixelCanvas;
+import paint.PaintCanvas;
 
 public class Demonstration
 {
@@ -12,7 +14,7 @@ public class Demonstration
 		int cSize = 1000;
 		Brush a = new Brush();
 		Brush b = new Brush();
-		int brushShapeSize = 20;
+		int brushShapeSize = 10;
 		BrushShapeImpl bs = new BrushShapeImpl();
 	
 		int radius = brushShapeSize / 2;
@@ -25,7 +27,7 @@ public class Demonstration
 			bs.setApplicationPoint(x, y);
 		}
 		
-		a.setShape(bs);
+		//a.setShape(bs);
 		
 		bs = new BrushShapeImpl();
 		int interval = 255 / brushShapeSize;
@@ -36,13 +38,13 @@ public class Demonstration
 		
 		b.setShape(bs);
 		
-		int color = 0xFF00FF;
+		Color color = Color.GREEN;
 		a.setColor(color);
 		b.setColor(color);
 		
-		PixelCanvas c = new PixelCanvas(cSize);
+		PaintCanvas c = new PaintCanvas(cSize);
 
-		int num_brushes = 10;
+		int num_brushes = 50;
 		Brush[] brushes = new Brush[num_brushes];
 		for(int i = 0; i < num_brushes; i++){
 			brushes[i] = b;

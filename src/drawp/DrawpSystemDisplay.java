@@ -27,10 +27,12 @@ public class DrawpSystemDisplay extends JPanel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
-		Timer t = new Timer(1000 / 120, (ae) ->
+		Timer t = new Timer(1000 / 30, (ae) ->
 		{
-			ps.update();
-			ps.draw();
+			for(int i = 0; i < 10; i++){
+				ps.update();
+		    ps.draw();
+			}
 			repaint();
 		});
 		

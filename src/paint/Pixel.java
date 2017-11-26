@@ -19,7 +19,7 @@ public class Pixel
 	public static int MASK_BLUE = 0x000000FF;
 	
 	public static int getAValue(int packedARGBVal){ return (packedARGBVal & MASK_ALPHA) >>> ALPHA_BITPOSITION;}
-	public static int getRValue(int packedARGBVal){ return (packedARGBVal & MASK_RED) >>> RED_BITPOSITION;}
+	public static int getRValue(int packedARGBVal){ return (packedARGBVal & MASK_RED) 	>>> RED_BITPOSITION;}
 	public static int getGValue(int packedARGBVal){ return (packedARGBVal & MASK_GREEN) >>> GREEN_BITPOSITION;}
 	public static int getBValue(int packedARGBVal){ return (packedARGBVal & MASK_BLUE);}
 	
@@ -46,10 +46,10 @@ public class Pixel
 	
 	public int toInt()
 	{
-		return pack(r, g, b, a);
+		return pack(a, r, g, b);
 	}
 	
-	public static int pack(int r, int g, int b, int a)
+	public static int pack(int a, int r, int g, int b)
 	{
 		return a << ALPHA_BITPOSITION 
 				| r << RED_BITPOSITION

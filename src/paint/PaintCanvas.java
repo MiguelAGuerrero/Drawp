@@ -9,12 +9,12 @@ import java.util.Iterator;
 import javax.imageio.ImageIO;
 
 /**
- * PixelCanvas represents a primitive pixmap. 
+ * PaintCanvas represents a primitive pixmap. 
  * Stores pixels using a BufferedImage
  * @author Miguel Guerrero
  */
 
-public class PixelCanvas implements Pixmap
+public class PaintCanvas implements Pixmap
 {
 
 	/**
@@ -32,7 +32,7 @@ public class PixelCanvas implements Pixmap
 	 */
 	private BufferedImage pixmap;
 	
-	public PixelCanvas(int width, int height)
+	public PaintCanvas(int width, int height)
 	{
 		this.WIDTH = width;
 		this.HEIGHT = height;
@@ -49,7 +49,10 @@ public class PixelCanvas implements Pixmap
 	 * Constructs a square canvas with the provided size
 	 * @param size The length of the canvas in terms of pixels
 	 */
-	public PixelCanvas(int size) { this(size, size); }
+	public PaintCanvas(int size)
+	{ 
+		this(size, size); 
+	}
 
 	public boolean setPixel(int pixelData, int x, int y)
 	{
@@ -58,8 +61,8 @@ public class PixelCanvas implements Pixmap
 			pixmap.setRGB(x, y, pixelData);
 			return true;
 		}
-
-		else return false;
+		
+		return false;
 	}
 
 	public int getPixel(int x, int y)

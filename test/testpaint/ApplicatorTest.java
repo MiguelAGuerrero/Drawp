@@ -10,18 +10,18 @@ import org.junit.Test;
 
 import paint.Applicator;
 import paint.Brush;
-import paint.PixelCanvas;
+import paint.PaintCanvas;
 
 public class ApplicatorTest 
 {
-	PixelCanvas testCanvas;
+	PaintCanvas testCanvas;
 	Applicator testBrush;
 
 	@Before
 	public void initValues()
 	{
 		int size = 10;
-		testCanvas = new PixelCanvas(size);
+		testCanvas = new PaintCanvas(size);
 		testCanvas.fill(0xFFFFFF);
 		testBrush = new Brush();
 	}

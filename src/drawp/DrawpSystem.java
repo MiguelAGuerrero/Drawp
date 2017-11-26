@@ -3,16 +3,16 @@ package drawp;
 import java.awt.image.BufferedImage;
 
 import paint.Brush;
-import paint.PixelCanvas;
+import paint.PaintCanvas;
 
 public abstract class DrawpSystem implements Runnable
 {
-	protected PixelCanvas canvas;
+	protected PaintCanvas canvas;
 	protected Brush[] brushes;
 	protected int frames;
 	protected int curFrame = 0;
 	
-	public DrawpSystem(PixelCanvas c, Brush[] brushes, int iterations)
+	public DrawpSystem(PaintCanvas c, Brush[] brushes, int iterations)
 	{
 		this.canvas = c;
 		this.brushes = brushes;

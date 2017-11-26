@@ -1,18 +1,23 @@
 package paint;
 
+import java.awt.Color;
+
 public class Brush implements Applicator
 {	
 	private double x;
 	private double y;
 	private int color = 0x0;
 	private BrushShape brushShape;
-	private BlendType blendType;
+	private Blender<Integer> blendType;
 	
 	public Brush()
 	{
 		this.x = 0;
 		this.y = 0;
 		this.brushShape = BrushShapeImpl.pixelPointPen();
+		this.blendType = BlendType.SUBTRACT;
+		this.blendType.setDestBlendFactor(0.5);
+		this.blendType.setSrcBlendFactor(1);
 	}
 
 	@Override
@@ -52,6 +57,11 @@ public class Brush implements Applicator
 		return this.brushShape;
 	}
 	
+	public void setColor(Color c)
+	{
+		this.color = c.getRGB();
+	}
+	
 	public void setColor(int color)
 	{
 		this.color = color;
@@ -62,7 +72,7 @@ public class Brush implements Applicator
 		return color;
 	}
 	
-	public BlendType getBlendType()
+	public Blender getBlendType()
 	{
 		return this.blendType;
 	}

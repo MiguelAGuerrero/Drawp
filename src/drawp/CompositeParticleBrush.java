@@ -43,8 +43,8 @@ implements Iterable<ParticleBrush>
 		//center brush
 		for(ParticleBrush pb: brushes)
 		{
-			pb.setPosition(pb.getX() + getVelocityX(), 
-					pb.getY() + getVelocityY());
+			pb.setPosition(pb.getX() + this.getVelocityX(), 
+					pb.getY() + this.getVelocityY());
 		}
 		
 	}

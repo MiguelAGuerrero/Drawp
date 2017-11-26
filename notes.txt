@@ -1,3 +1,0 @@
-The motion of a particle can be defined using piecewise functions
-If the function is elementary, it can be translated to represent kinematic attributes of the function 
-   The result will be an arbitrary polynomial
