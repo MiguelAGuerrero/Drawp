@@ -17,9 +17,9 @@ public class Particles extends DrawpSystem
 	private Collection<ParticleBrush> particleBrushes;
 	private ParticleSystem system;
 	
-	public Particles(PaintCanvas c, Brush[] brushes, int iterations)
+	public Particles(PaintCanvas c, Brush[] brushes)
 	{
-		super(c, brushes, iterations);
+		super(c, brushes);
 		initParticleSystem();
 		registerParticleBrushes();
 		setupParticles();
@@ -49,13 +49,13 @@ public class Particles extends DrawpSystem
 		double radius = 1000;
 		double strength = -0.1;
 		ForceField a = new ForceField(radius, strength);
-		ForceField b = new ForceField(100, -100);
+		ForceField b = new ForceField(100, 120);
 		a.setPosition(canvas.WIDTH / 2, canvas.HEIGHT / 2);
 		b.setPosition(canvas.WIDTH / 2, canvas.HEIGHT / 2);
 		b.setAngularVelocity(1);
 		b.setVelocity(10, 0);
-		//system.registerForce(a); 
-		//system.registerForce(b); 
+		system.registerForce(a); 
+		system.registerForce(b); 
 
 	}
 	
@@ -82,7 +82,7 @@ public class Particles extends DrawpSystem
 		int size = particleBrushes.size();
 		Iterator<ParticleBrush> itr = particleBrushes.iterator();
 		double interval = 2 * Math.PI / size;
-		double radius = 100;
+		double radius = 10;
 		for(int i = 0; i < size; i++)
 		{
 			ParticleBrush pb = itr.next();
@@ -90,9 +90,10 @@ public class Particles extends DrawpSystem
 			double cosx = Math.cos(angrad);
 			double siny =  Math.sin(angrad);
 			pb.setPosition(cx + radius * cosx, cy + radius * siny);
-			pb.setVelocity(0.2, 0);
+			pb.setVelocity(0, 1);
 			pb.setAngle(Math.toDegrees(angrad));
-			pb.setAngularVelocity(0.1);
+			pb.setAngularVelocity(1);
+			pb.setAngularAcceleration(-0.0005);
 		}
 	}
 

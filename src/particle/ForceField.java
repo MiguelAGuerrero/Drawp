@@ -16,21 +16,13 @@ public class ForceField extends Particle implements Force
 	{
 		if(isInRange(particle))
 		{
-			boolean above = particle.getY() > this.getY();
-			if(above)
-			{
-				particle.setY(particle.getY() - strength);
-			}
+			double dx = this.getX() - particle.getX();
+			double dy = this.getY() - particle.getY();
+			double magnitude = Math.hypot(dx, dy);
+			particle.setPosition(
+					particle.getX() + strength * dx / magnitude, 
+					particle.getY() + strength * dy / magnitude);
 			
-			else particle.setY(particle.getY() + strength);
-			
-			boolean onRight = particle.getX() > this.getX();
-			if(onRight)
-			{
-				particle.setX(particle.getX() - strength);
-			}
-			
-			else particle.setX(particle.getX() + strength);
 		}
 	}
 

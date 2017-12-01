@@ -10,30 +10,31 @@ import javax.swing.Timer;
 
 import particle.ParticleSystem;
 
+@SuppressWarnings("serial")
 public class DrawpSystemDisplay extends JPanel
 {
-	/**
-	 * TODO: Make a graphical display of the particles in motion
-	 */
-	
-	private DrawpSystem ps;
+	private DrawpSystem particleSystem;
 	
 	public DrawpSystemDisplay(DrawpSystem ps)
 	{
-		this.ps = ps;
+		this.particleSystem = ps;
 		JFrame frame = new JFrame();
 		frame.add(this);
 		this.setPreferredSize(new Dimension(500,500));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
-		Timer t = new Timer(1000 / 30, (ae) ->
+		
+		Timer t = new Timer(1000 / 60, (ae) ->
 		{
-			for(int i = 0; i < 10; i++){
+			for(int i = 0; i < 10; i++)
+			{
 				ps.update();
-		    ps.draw();
+				ps.draw();
 			}
+			
 			repaint();
+			
 		});
 		
 		t.start();
@@ -42,7 +43,7 @@ public class DrawpSystemDisplay extends JPanel
 	public void paintComponent(Graphics g)
 	{
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(ps.getImage(), null, 0, 0);
-		g2d.drawImage(ps.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+		g2d.drawImage(particleSystem.getImage(), null, 0, 0);
+		g2d.drawImage(particleSystem.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
 	}
 }

@@ -65,15 +65,15 @@ public class Particle implements Comparable<Particle>
 			angle = calculateAngleFromVelocities();
 		}
 
-		public double getAccelX() {
+		public double getAccelerationX() {
 			return accelX;
 		}
 
-		public void setAccelX(double accelX) {
+		public void setAccelerationX(double accelX) {
 			this.accelX = accelX;
 		}
 
-		public double getAccelerationX() {
+		public double getAccelerationY() {
 			return accelY;
 		}
 
@@ -83,7 +83,7 @@ public class Particle implements Comparable<Particle>
 
 		public void setAcceleration(double accelX, double accelY)
 		{
-			setAccelX(accelX);
+			setAccelerationX(accelX);
 			setAccelerationY(accelY);
 		}
 		

@@ -8,8 +8,8 @@ public enum BlendType implements Blender<Integer>
 	 * TODO: Fix the blending algorithm. They do not work. Noticed that values can overflow 
 	 * over 255, creating representation issues.
 	 */
-	  ADD(     (Integer a, Integer b) -> a + b)
-	, SUBTRACT((Integer a, Integer b) -> a - b)
+	  ADD(     (Integer a, Integer b) -> (a + b) / 2)
+	, SUBTRACT((Integer a, Integer b) -> (a - b) / 2)
 	, MULTIPLY((Integer a, Integer b) -> a * b);
 	
 	private final BinaryOperator<Integer> bop;

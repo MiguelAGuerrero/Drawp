@@ -89,7 +89,7 @@ public class TestParticle
 	public void testPositiveAccelX()
 	{
 		double accelX = 1;
-		p.setAccelX(accelX);
+		p.setAccelerationX(accelX);
 		moveByFrames(p, 2);
 		double expectedPosX = accelX;
 		assertEquals(p.getX(), expectedPosX, epsilon);

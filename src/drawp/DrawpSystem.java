@@ -12,11 +12,10 @@ public abstract class DrawpSystem implements Runnable
 	protected int frames;
 	protected int curFrame = 0;
 	
-	public DrawpSystem(PaintCanvas c, Brush[] brushes, int iterations)
+	public DrawpSystem(PaintCanvas c, Brush[] brushes)
 	{
 		this.canvas = c;
 		this.brushes = brushes;
-		this.frames = iterations;
 	}
 
 	/**

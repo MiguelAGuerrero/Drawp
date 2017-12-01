@@ -8,15 +8,16 @@ import paint.Applicator;
 import paint.Pixmap;
 
 public class CompositeParticleBrush 
-extends ParticleBrush 
-implements Iterable<ParticleBrush>
+	extends ParticleBrush 
+	implements Iterable<ParticleBrush>
 {
 	private Collection<ParticleBrush> brushes;
 	
 	public CompositeParticleBrush(ParticleBrush... brushes)
 	{
 		this.brushes = new ArrayList<ParticleBrush>();
-		for(ParticleBrush b: brushes) { this.brushes.add(b); }
+		for(ParticleBrush b: brushes)
+			this.brushes.add(b);
 	}
 
 	public void addBrush(ParticleBrush pb)

@@ -14,9 +14,9 @@ public class Brush implements Applicator
 	{
 		this.x = 0;
 		this.y = 0;
-		this.brushShape = BrushShapeImpl.pixelPointPen();
-		this.blendType = BlendType.SUBTRACT;
-		this.blendType.setDestBlendFactor(0.5);
+		this.brushShape = BrushShape.pixelPointPen();
+		this.blendType = BlendType.ADD;
+		this.blendType.setDestBlendFactor(1);
 		this.blendType.setSrcBlendFactor(1);
 	}
 
@@ -70,11 +70,6 @@ public class Brush implements Applicator
 	public int getColor()
 	{
 		return color;
-	}
-	
-	public Blender getBlendType()
-	{
-		return this.blendType;
 	}
 	
 	public void setBlendType(BlendType bt)
