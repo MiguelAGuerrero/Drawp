@@ -1,6 +1,6 @@
 package particle;
 
-public class Particle implements Comparable<Particle>
+public class Particle
 {
 		private double x;
 		private double y;
@@ -157,16 +157,6 @@ public class Particle implements Comparable<Particle>
 			return Math.atan2(velX, velY);
 		}
 
-		@Override
-		public int compareTo(Particle otherParticle)
-		{
-			double dx = this.getX() - otherParticle.getX();
-			double dy = this.getY() - otherParticle.getY();
-			double units = dx + dy;
-			double origin = 0;
-			return Double.compare(units, origin);
-		}
-		
 		//TODO: Implement this using the physical state of the particle
 		public String toString()
 		{

@@ -13,23 +13,12 @@ import particle.ForceField;
 import particle.ParticleSystem;
 
 public class Particles extends DrawpSystem
-{
-	private Collection<ParticleBrush> particleBrushes;
-	private ParticleSystem system;
-	
+{	
 	public Particles(PaintCanvas c, Brush[] brushes)
 	{
 		super(c, brushes);
-		initParticleSystem();
-		registerParticleBrushes();
 		setupParticles();
 		addAttractor();
-	}
-	
-	private void initParticleSystem()
-	{
-		this.particleBrushes = new ArrayList<>();
-		this.system = new ParticleSystem();
 	}
 	
 	@Override
@@ -46,7 +35,7 @@ public class Particles extends DrawpSystem
 	
 	private void addAttractor()
 	{
-		double radius = 1000;
+		double radius = 100;
 		double strength = -0.1;
 		ForceField a = new ForceField(radius, strength);
 		ForceField b = new ForceField(100, 120);
@@ -56,17 +45,6 @@ public class Particles extends DrawpSystem
 		b.setVelocity(10, 0);
 		system.registerForce(a); 
 		system.registerForce(b); 
-
-	}
-	
-	private void registerParticleBrushes()
-	{
-		for(Brush b: brushes)
-		{
-			ParticleBrush pb = new ParticleBrush(b);
-			particleBrushes.add(pb);
-			system.registerParticle(pb);
-		}
 	}
 	
 	private void applyBrushes()
@@ -92,8 +70,6 @@ public class Particles extends DrawpSystem
 			pb.setPosition(cx + radius * cosx, cy + radius * siny);
 			pb.setVelocity(0, 1);
 			pb.setAngle(Math.toDegrees(angrad));
-			pb.setAngularVelocity(1);
-			pb.setAngularAcceleration(-0.0005);
 		}
 	}
 

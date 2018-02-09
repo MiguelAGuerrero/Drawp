@@ -44,6 +44,7 @@ public class CompositeParticleBrush
 		//center brush
 		for(ParticleBrush pb: brushes)
 		{
+			pb.move();
 			pb.setPosition(pb.getX() + this.getVelocityX(), 
 					pb.getY() + this.getVelocityY());
 		}

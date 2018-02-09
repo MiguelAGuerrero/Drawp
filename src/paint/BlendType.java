@@ -5,12 +5,11 @@ import java.util.function.BinaryOperator;
 public enum BlendType implements Blender<Integer>
 {	
 	/**
-	 * TODO: Fix the blending algorithm. They do not work. Noticed that values can overflow 
-	 * over 255, creating representation issues.
+	 * TODO: Fix the blending algorithm.
 	 */
 	  ADD(     (Integer a, Integer b) -> (a + b) / 2)
 	, SUBTRACT((Integer a, Integer b) -> (a - b) / 2)
-	, MULTIPLY((Integer a, Integer b) -> a * b);
+	, MULTIPLY((Integer a, Integer b) -> a * b / 2);
 	
 	private final BinaryOperator<Integer> bop;
 	private double srcBlendFactor;

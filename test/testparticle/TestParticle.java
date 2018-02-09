@@ -1,4 +1,4 @@
-package testphysics;
+package testparticle;
 
 import static org.junit.Assert.*;
 

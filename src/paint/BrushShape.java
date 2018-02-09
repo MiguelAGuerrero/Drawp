@@ -44,7 +44,8 @@ public class BrushShape implements Iterable<ApplicationPoint>
 	
 	public void setApplicationPoint(int x, int y)
 	{
-		points.add(new ApplicationPoint(x, y, ApplicationPoint.MAX_INTENSITY));
+		points.add(new ApplicationPoint(x, y, 
+				ApplicationPoint.MAX_INTENSITY));
 	}
 	
 	public void setApplicationPoint(int x, int y, int intensity)

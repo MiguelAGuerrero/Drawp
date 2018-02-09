@@ -27,11 +27,13 @@ public class Brush implements Applicator
 		{
 			int posX = (int) (this.x + ap.getX());
 			int posY = (int) (this.y + ap.getY());
-			int pixel = (ap.intensity() << Pixel.ALPHA_BITPOSITION) | this.getColor();
+			int pixel = (ap.intensity() << Pixel.ALPHA_BITPOSITION) 
+					| this.getColor();
 			
 			if(blendType != null)
 			{
-				pixel = blendType.blend(pixel, bitmap.getPixel(posX, posY));
+				pixel = blendType.blend(pixel, 
+						bitmap.getPixel(posX, posY));
 			}
 			
 			bitmap.setPixel(pixel, posX, posY);				
@@ -44,8 +46,8 @@ public class Brush implements Applicator
 		this.y = y;
 	}
 	
-	public double x(){ return this.x; }
-	public double y(){ return this.y; }
+	public double getX(){ return this.x; }
+	public double getY(){ return this.y; }
 	
 	public void setShape(BrushShape bs)
 	{
@@ -72,7 +74,7 @@ public class Brush implements Applicator
 		return color;
 	}
 	
-	public void setBlendType(BlendType bt)
+	public void setBlend(Blender<Integer> bt)
 	{
 		this.blendType = bt;
 	}

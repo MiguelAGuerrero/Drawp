@@ -41,7 +41,8 @@ public class PaintCanvas implements Pixmap
 
 	private void initPixmap()
 	{
-		pixmap = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+		pixmap = new BufferedImage(WIDTH, HEIGHT, 
+				BufferedImage.TYPE_INT_ARGB);
 		fill(0xFFFFFFFF);
 	}
 	
@@ -72,7 +73,10 @@ public class PaintCanvas implements Pixmap
 		return -1;
 	}
 
-	public int[] getPixels(){ return pixmap.getRGB(0, 0, WIDTH, HEIGHT, null, 0, 1); }
+	public int[] getPixels()
+	{ 
+		return pixmap.getRGB(0, 0, WIDTH, HEIGHT, null, 0, 1); 
+	}
 
 	private boolean inBounds(int x, int y)
 	{

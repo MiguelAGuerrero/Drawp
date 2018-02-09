@@ -9,7 +9,7 @@ import paint.BlendType;
 import paint.Blender;
 import paint.Pixel;
 
-public class BlenderTest
+public class BlendTypeTest
 {
 	private Blender<Integer> testBlender;
 	private Pixel p1;
