@@ -12,7 +12,7 @@ import paint.Brush;
 import paint.BrushShape;
 import paint.PaintCanvas;
 
-public class Demonstration
+public class Demo
 {
 	public static void main(String[] args) throws IOException
 	{
@@ -34,7 +34,7 @@ public class Demonstration
 		int num_brushes = 10;
 		Brush[] brushes = new Brush[num_brushes];
 		for(int i = 0; i < num_brushes; i++){
-			brushes[i] = b;
+			brushes[i] = a;
 		}
 		
 		DrawpSystemDisplay dsd = new DrawpSystemDisplay(new Particles(canvas, brushes));

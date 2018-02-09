@@ -1,6 +1,8 @@
 package paint;
 
-public class ApplicationPoint
+import java.awt.geom.Point2D;
+
+public class ApplicationPoint extends Point2D
 {
 	public static int MAX_INTENSITY = 255;
 	
@@ -36,13 +38,11 @@ public class ApplicationPoint
 	{
 		return intensity;
 	}
-
-	public int compareTo(ApplicationPoint ap)
-	{			
-		double dx = this.getX() - ap.getX();
-		double dy = this.getY() - ap.getY();
-		double units = dx + dy;
-		double origin = 0;
-		return Double.compare(units, origin);
+	
+	@Override
+	public void setLocation(double x, double y)
+	{
+		this.x = x;
+		this.y = y;
 	}
 }

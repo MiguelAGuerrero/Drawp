@@ -15,17 +15,6 @@ public class CompositeBrushDemo extends DrawpSystem
 	}
 
 	@Override
-	public void update()
-	{
-	}
-
-	@Override
-	public void draw()
-	{
-		
-	}
-
-	@Override
 	public BufferedImage getImage() {
 		return this.canvas.getImage();
 	}

@@ -36,7 +36,7 @@ public class ParticleBrush extends Particle implements Applicator
 		double magnitude = (int) (dy / dx);
 
 		//Interpolate if brush will move beyond just 1 pixel
-		if(magnitude > 1)
+		if(false)
 		{
 			//Normalize the change in position
 			dx /= magnitude;
@@ -45,8 +45,8 @@ public class ParticleBrush extends Particle implements Applicator
 			for(int i = 0; i <= magnitude; i++)
 			{
 				brush.moveTo(
-						this.previousPos[0] + dx * i, 
-						this.previousPos[1] + dy * i);
+						getPrevPosX() + dx * i, 
+						getPrevPosY() + dy * i);
 				brush.apply(b);
 			}
 		}
@@ -78,5 +78,15 @@ public class ParticleBrush extends Particle implements Applicator
 	{
 		this.previousPos[0] = x;
 		this.previousPos[1] = y;
+	}
+	
+	private double getPrevPosX()
+	{
+		return previousPos[0];
+	}
+	
+	private double getPrevPosY()
+	{
+		return previousPos[1];
 	}
 }

@@ -42,6 +42,11 @@ public class BrushShape implements Iterable<ApplicationPoint>
 			}
 	}
 	
+	private void getPixelDarkness(int pixel)
+	{
+		
+	}
+	
 	public void setApplicationPoint(int x, int y)
 	{
 		points.add(new ApplicationPoint(x, y, 

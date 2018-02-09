@@ -14,9 +14,15 @@ public abstract class DrawpSystem implements Runnable
 	protected int frames;
 	protected int curFrame = 0;
 	protected ParticleSystem system;
-	public DrawpSystem(PaintCanvas c, Brush[] brushes)
+	
+	/**
+	 * Constructs a DrawpSystem with the provided canvas and brushes
+	 * @param canvas canvas object to draw on
+	 * @param brushes brushes to 
+	 */
+	public DrawpSystem(PaintCanvas canvas, Brush[] brushes)
 	{
-		this.canvas = c;
+		this.canvas = canvas;
 		system = new ParticleSystem();
 		particleBrushes = new ArrayList<>();
 		createParticleBrushesFromBrushes(brushes);
