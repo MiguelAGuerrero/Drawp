@@ -59,6 +59,11 @@ public abstract class DrawpSystem implements Runnable
 		}
 	}
 	
+	public ParticleSystem getParticleSystem()
+	{
+		return this.system;
+	}
+	
 	/**
 	 * Gets the image representing the visual state of the DrawpSystem
 	 * @return

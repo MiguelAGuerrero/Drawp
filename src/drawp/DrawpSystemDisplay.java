@@ -22,7 +22,8 @@ public class DrawpSystemDisplay extends JPanel
 {
 	private static int DEFAULT_FRAMERATE = 60;
 	private static int DEFAULT_UPDATERATE = 1;
-	private DrawpSystem particleSystem;
+	private DrawpSystem drawp;
+	private Timer loop;
 	
 	/**
 	 * Creates a display for a DrawpSystem
@@ -36,11 +37,11 @@ public class DrawpSystemDisplay extends JPanel
 	
 	/**
 	 * Creates a display for a DrawpSystem
-	 * @param particleSystem a DrawpSystem to be displayed
+	 * @param drawp a DrawpSystem to be displayed
 	 */
-	public DrawpSystemDisplay(DrawpSystem particleSystem, int frameRate, int updateRate)
+	public DrawpSystemDisplay(DrawpSystem drawp, int frameRate, int updateRate)
 	{
-		this.particleSystem = particleSystem;
+		this.drawp = drawp;
 		JFrame frame = new JFrame();
 		frame.add(this);
 		
@@ -52,7 +53,20 @@ public class DrawpSystemDisplay extends JPanel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
-		
+		loop = createTimer(frameRate, updateRate);
+		start();
+	}
+	
+	public void paintComponent(Graphics g)
+	{
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.drawImage(drawp.getImage(), null, 0, 0);
+		g2d.drawImage(drawp.getImage(), 0, 0, 
+				this.getWidth(), this.getHeight(), null);
+	}
+	
+	private Timer createTimer(int frameRate, int updateRate)
+	{
 		//Rate of update/draw cycles
 		int FPS = 1000 / frameRate;
 		
@@ -68,22 +82,23 @@ public class DrawpSystemDisplay extends JPanel
 			//so one can see every call to update
 			for(int i = 0; i < updateRate; i++)
 			{
-				particleSystem.update();
-				particleSystem.draw();
+				drawp.update();
+				drawp.draw();
 			}
 			
 			repaint();
 		});
 		
-		
-		timer.start();
+		return timer;
 	}
 	
-	public void paintComponent(Graphics g)
+	public void stop()
 	{
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(particleSystem.getImage(), null, 0, 0);
-		g2d.drawImage(particleSystem.getImage(), 0, 0, 
-				this.getWidth(), this.getHeight(), null);
+		this.loop.stop();
+	}
+	
+	public void start()
+	{
+		this.loop.start();
 	}
 }

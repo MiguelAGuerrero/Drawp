@@ -1,5 +1,7 @@
 package paint;
 
+import java.awt.Color;
+
 /**
  * A utility class that can unpack and manipulate pixel data that are represented as 32-bit integers.
  * @author Miguel Guerrero
@@ -62,9 +64,29 @@ public class Pixel
 		return  "R: " + "G: " + g + "B: " + b + "A: " + a;
 	}
 	
-	public static Pixel valueOf(int pixelData)
+	public static Pixel valueOf(int pixel)
 	{
-		return new Pixel(pixelData);
+		return new Pixel(pixel);
+	}
+	
+	public static int toGrayscale(int pixel)
+	{
+		int avg = avgRGBValue(pixel);
+		int pixelInGrayscale = pack(getAValue(pixel), avg, avg, avg);
+		return pixelInGrayscale;
+	}
+	
+	public static int avgRGBValue(int pixel)
+	{
+		//Get separate RGB values
+		int r = getRValue(pixel);
+		int g = getGValue(pixel);
+		int b = getBValue(pixel);
+		
+		//Compute the average and form a
+		//new pixel where each value is the average
+		//to form a grayscale
+		return (r + g + b)  / 3;		
 	}
 	
 	public boolean equals(Pixel p)

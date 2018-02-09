@@ -12,9 +12,9 @@ import paint.PaintCanvas;
 import particle.ForceField;
 import particle.ParticleSystem;
 
-public class Particles extends DrawpSystem
+public class SimpleDemo extends DrawpSystem
 {	
-	public Particles(PaintCanvas c, Brush[] brushes)
+	public SimpleDemo(PaintCanvas c, Brush[] brushes)
 	{
 		super(c, brushes);
 		setupParticles();

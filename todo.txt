@@ -5,7 +5,7 @@ Paint
       
    Brush Shapes
       - Brush shapes should define the points in 2D space where pixels are applied
-      
+      - Use a black / white image to define a brushes shape
    Application
       - The application of a brush should produce pixels onto a pixmap
       - Interpolation
