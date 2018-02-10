@@ -14,6 +14,9 @@ public class ForceField extends Particle implements Force
 	@Override
 	public void applyForce(Particle particle)
 	{
+		//Do not apply the force upon itself
+		if(this == particle)
+			return;
 		if(isInRange(particle))
 		{
 			double dx = this.getX() - particle.getX();
@@ -22,7 +25,6 @@ public class ForceField extends Particle implements Force
 			particle.setPosition(
 					particle.getX() + strength * dx / magnitude, 
 					particle.getY() + strength * dy / magnitude);
-			
 		}
 	}
 

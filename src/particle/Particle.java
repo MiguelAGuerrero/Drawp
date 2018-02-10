@@ -87,11 +87,18 @@ public class Particle
 			setAccelerationY(accelY);
 		}
 		
-		public double getAngle() {
+		public boolean isAccelerating()
+		{
+			return this.accelX != 0 && this.accelY !=0;
+		}
+		
+		public double getAngle()
+		{
 			return angle;
 		}
 
-		public void setAngle(double angle) {
+		public void setAngle(double angle)
+		{
 			this.angle = angle;
 			setVelocitiesWithRespectToAngle();
 		}
@@ -103,7 +110,8 @@ public class Particle
 			this.velY = speed * Math.sin(Math.toRadians(angle));
 		}
 		
-		public double getSpeed(){
+		public double getSpeed()
+		{
 			return Math.hypot(velX, velY);
 		}
 		
@@ -111,24 +119,28 @@ public class Particle
 			return angularVelocity;
 		}
 
-		public void setAngularVelocity(double angularVelocity) {
+		public void setAngularVelocity(double angularVelocity)
+		{
 			this.angularVelocity = angularVelocity;
 		}
 
-		public double getAngularAcceleration() {
+		public double getAngularAcceleration()
+		{
 			return angularAcceleration;
 		}
 
-		public void setAngularAcceleration(double angularAcceleration) {
+		public void setAngularAcceleration(double angularAcceleration)
+		{
 			this.angularAcceleration = angularAcceleration;
 		}
 
 		public void move()
 		{
 			applyAngularChangesToVelocities();
-			displaceParticle();
+			displace();
 			applyAcceleration();
 		}
+		
 		
 		private void applyAngularChangesToVelocities()
 		{
@@ -140,7 +152,7 @@ public class Particle
 			}
 		}
 		
-		private void displaceParticle()
+		private void displace()
 		{
 			this.x += velX;
 			this.y += velY;

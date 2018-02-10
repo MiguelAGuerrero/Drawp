@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import drawp.DrawpSystemDisplay;
 import paint.Brush;
 import paint.BrushShape;
 import paint.PaintCanvas;
@@ -22,7 +21,6 @@ public class DemoMain
 		
 		int brushSize = 10;
 		presetA(a, brushSize);
-		presetB(b, brushSize);
 		
 		Color color = Color.RED;
 		a.setColor(color);
@@ -31,10 +29,10 @@ public class DemoMain
 		int canvasSize = 1000;
 		PaintCanvas canvas = new PaintCanvas(canvasSize);
 
-		int num_brushes = 10;
+		int num_brushes = 200;
 		Brush[] brushes = new Brush[num_brushes];
 		for(int i = 0; i < num_brushes; i++){
-			brushes[i] = a;
+			brushes[i] = b;
 		}
 		
 		DrawpSystemDisplay dsd = new DrawpSystemDisplay(new SimpleDemo(canvas, brushes));

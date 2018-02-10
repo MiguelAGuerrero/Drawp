@@ -11,13 +11,13 @@ public enum BlendType implements Blender<Integer>
 	, SUBTRACT((Integer a, Integer b) -> (a - b) / 2)
 	, MULTIPLY((Integer a, Integer b) -> a * b / 2);
 	
-	private final BinaryOperator<Integer> bop;
-	private double srcBlendFactor;
-	private double destBlendFactor;
+	private final BinaryOperator<Integer> blendFunc;
+	private double srcBlendFactor = 0.5;
+	private double destBlendFactor = 0.5;
 	
 	BlendType(BinaryOperator<Integer> bop)
 	{
-		this.bop = bop;
+		this.blendFunc = bop;
 	}
 	
 	public void setSrcBlendFactor(double blendFactor)
@@ -34,10 +34,10 @@ public enum BlendType implements Blender<Integer>
 	{
 		Pixel p1 = new Pixel(srcPixelData);
 		Pixel p2 = new Pixel(destPixelData);
-		int newA = bop.apply((int) srcBlendFactor * p1.a, (int) destBlendFactor * p2.a);
-		int newR = bop.apply((int) srcBlendFactor * p1.r, (int) destBlendFactor * p2.r);
-		int newG = bop.apply((int) srcBlendFactor * p1.g, (int) destBlendFactor * p2.g);
-		int newB = bop.apply((int) srcBlendFactor * p1.b, (int) destBlendFactor * p2.b);
+		int newA = blendFunc.apply((int) srcBlendFactor * p1.a, (int) destBlendFactor * p2.a);
+		int newR = blendFunc.apply((int) srcBlendFactor * p1.r, (int) destBlendFactor * p2.r);
+		int newG = blendFunc.apply((int) srcBlendFactor * p1.g, (int) destBlendFactor * p2.g);
+		int newB = blendFunc.apply((int) srcBlendFactor * p1.b, (int) destBlendFactor * p2.b);
 		return Pixel.pack(newA, newR, newG, newB);
 	}
 }
