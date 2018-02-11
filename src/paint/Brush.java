@@ -15,9 +15,7 @@ public class Brush implements Applicator
 		this.x = 0;
 		this.y = 0;
 		this.brushShape = BrushShape.pixelPointPen();
-		this.blendType = BlendType.ADD;
-		this.blendType.setDestBlendFactor(1);
-		this.blendType.setSrcBlendFactor(1);
+		this.blendType = BlendType.NORMAL;
 	}
 
 	@Override

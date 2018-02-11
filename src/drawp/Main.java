@@ -7,6 +7,8 @@ public class Main
 	//For now, open the GUI
 	public static void main(String[] args)
 	{		
-		new MainFrame();
+		int width = 500;
+		int height = 500;
+		new MainFrame(width, height);
 	}
 }

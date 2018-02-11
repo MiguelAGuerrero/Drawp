@@ -21,8 +21,8 @@ public class DemoMain
 		
 		int brushSize = 10;
 		presetA(a, brushSize);
-		
-		Color color = Color.RED;
+		presetB(b, brushSize);
+		Color color = Color.BLACK;
 		a.setColor(color);
 		b.setColor(color);
 		
