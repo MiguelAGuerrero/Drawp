@@ -1,5 +1,7 @@
 package drawp;
 
+import java.awt.geom.Point2D;
+
 import paint.Applicator;
 import paint.Pixmap;
 import paint.Brush;
@@ -11,7 +13,8 @@ public class ParticleBrush extends Particle implements Applicator
 	
 	//For interpolation when pixel moves beyond just
 	//1 pixel
-	private double[] previousPos = {0, 0};
+	private int[] previousPos = {0, 0};
+	private BresenhamLine bl = new BresenhamLine();
 	
 	public ParticleBrush()
 	{
@@ -31,61 +34,60 @@ public class ParticleBrush extends Particle implements Applicator
 	@Override
 	public void apply(Pixmap b)
 	{ 
-		double dx = Math.abs(getX() - this.previousPos[0]);
-		double dy = Math.abs(getY() - this.previousPos[1]);
-		double magnitude = (int) (dy / dx);
+		int dx = (int) Math.round(getX() - this.getPrevX());
+		int dy = (int) Math.round(getY() - this.getPrevY());
+		double magnitude = Math.hypot(dx, dy);
 
 		//Interpolate if brush will move beyond just 1 pixel
-		if(false)
+		if(magnitude > 1)
 		{
-			//Normalize the change in position
-			dx /= magnitude;
-			dy /= magnitude;
+			bl.interpolate(getPrevX(), getPrevY(), (int) getX(), (int) getY());
 			
-			for(int i = 0; i <= magnitude; i++)
+			for(Point2D p: bl.getPoints())
 			{
-				brush.moveTo(
-						getPrevPosX() + dx * i, 
-						getPrevPosY() + dy * i);
+				brush.setPosition((int) p.getX(), (int) p.getY());
 				brush.apply(b);
 			}
 		}
 		
 		else
 		{
-			brush.moveTo(getX(), getY());
+			brush.setPosition(
+					(int) Math.round(this.getX()), 
+					(int) Math.round(this.getY()));
 			brush.apply(b);
 		}
 	}
 	
-	@Override
-	public void setPosition(double x, double y)
+	public void setLocation(int x, int y)
 	{
 		//This is to make sure that the brushes do not drag along with
 		//the sudden change in position
 		storePosition(x, y);
-		super.setPosition(x, y);
+		super.setLocation(x, y);
 	}
 	
 	@Override 
 	public void move()
 	{
-		storePosition(this.getX(), this.getY());
+		storePosition(
+				(int) Math.round(this.getX()), 
+				(int) Math.round(this.getY()));
 		super.move();
 	}
 	
-	private void storePosition(double x, double y)
+	private void storePosition(int x, int y)
 	{
 		this.previousPos[0] = x;
 		this.previousPos[1] = y;
 	}
 	
-	private double getPrevPosX()
+	private int getPrevX()
 	{
 		return previousPos[0];
 	}
 	
-	private double getPrevPosY()
+	private int getPrevY()
 	{
 		return previousPos[1];
 	}

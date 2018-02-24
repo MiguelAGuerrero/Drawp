@@ -1,6 +1,8 @@
 package particle;
 
-public class Particle
+import java.awt.geom.Point2D;
+
+public class Particle extends Point2D
 {
 		private double x;
 		private double y;
@@ -28,12 +30,6 @@ public class Particle
 
 		public void setY(double y) {
 			this.y = y;
-		}
-
-		public void setPosition(double x, double y)
-		{
-			setX(x);
-			setY(y);
 		}
 		
 		public double getVelocityX() {
@@ -173,5 +169,12 @@ public class Particle
 		public String toString()
 		{
 			return "";
+		}
+
+		@Override
+		public void setLocation(double x, double y)
+		{
+			setX(x);
+			setY(y);
 		}
 }

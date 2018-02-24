@@ -4,8 +4,8 @@ import java.awt.Color;
 
 public class Brush implements Applicator
 {	
-	private double x;
-	private double y;
+	private int x;
+	private int y;
 	private int color = 0x0;
 	private BrushShape brushShape;
 	private Blender<Integer> blendType;
@@ -23,29 +23,26 @@ public class Brush implements Applicator
 	{
 		for(ApplicationPoint ap: brushShape)
 		{
-			int posX = (int) (this.x + ap.getX());
-			int posY = (int) (this.y + ap.getY());
+			int targetX = (int) (this.getX() + ap.getX());
+			int targetY = (int) (this.getY() + ap.getY());
+			
 			int pixel = (ap.intensity() << Pixel.ALPHA_BITPOSITION) 
 					| this.getColor();
 			
-			if(blendType != null)
-			{
-				pixel = blendType.blend(pixel, 
-						bitmap.getPixel(posX, posY));
-			}
+			pixel = blendType.blend(pixel, bitmap.getPixel(targetX, targetY));
 			
-			bitmap.setPixel(pixel, posX, posY);				
+			bitmap.setPixel(pixel, targetX, targetY);				
 		}
 	}
 	
-	public void moveTo(double x, double y)
+	public void setPosition(int x, int y)
 	{
 		this.x = x;
 		this.y = y;
 	}
 	
-	public double getX(){ return this.x; }
-	public double getY(){ return this.y; }
+	public int getX(){ return this.x; }
+	public int getY(){ return this.y; }
 	
 	public void setShape(BrushShape bs)
 	{
@@ -70,6 +67,11 @@ public class Brush implements Applicator
 	public int getColor()
 	{
 		return color;
+	}
+	
+	public Blender<Integer> getBlend()
+	{
+		return this.blendType;
 	}
 	
 	public void setBlend(Blender<Integer> bt)

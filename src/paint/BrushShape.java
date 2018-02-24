@@ -21,7 +21,7 @@ public class BrushShape implements Iterable<ApplicationPoint>
 		if(pointPen == null)
 		{
 			pointPen = new BrushShape();
-			pointPen.setApplicationPoint(0, 0);	
+			pointPen.addApplicationPoint(0, 0);	
 		}
 		
 		 return pointPen;
@@ -49,18 +49,18 @@ public class BrushShape implements Iterable<ApplicationPoint>
 				int avg = Pixel.avgRGBValue(pixel);
 				if(avg < BLACKNESS_THRESHOLD)
 				{
-					setApplicationPoint(i, j, intensity);
+					addApplicationPoint(i, j, intensity);
 				}
 			}
 	}
 	
-	public void setApplicationPoint(int x, int y)
+	public void addApplicationPoint(int x, int y)
 	{
 		points.add(new ApplicationPoint(x, y, 
 				ApplicationPoint.MAX_INTENSITY));
 	}
 	
-	public void setApplicationPoint(int x, int y, int intensity)
+	public void addApplicationPoint(int x, int y, int intensity)
 	{
 		points.add(new ApplicationPoint(x, y, intensity));
 	}

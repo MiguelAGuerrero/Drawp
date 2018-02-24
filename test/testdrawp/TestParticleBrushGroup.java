@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import drawp.ParticleBrush;
 import drawp.CompositeParticleBrush;
+import drawp.ParticleBrush;
 
 public class TestParticleBrushGroup
 {

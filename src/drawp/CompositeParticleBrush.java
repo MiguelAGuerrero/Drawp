@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import paint.Applicator;
 import paint.Pixmap;
 
 public class CompositeParticleBrush 
@@ -44,8 +43,7 @@ public class CompositeParticleBrush
 		//center brush
 		for(ParticleBrush pb: brushes)
 		{
-			pb.move();
-			pb.setPosition(pb.getX() + this.getVelocityX(), 
+			pb.setLocation(pb.getX() + this.getVelocityX(), 
 					pb.getY() + this.getVelocityY());
 		}
 		

@@ -21,21 +21,21 @@ public class DemoMain
 		
 		int brushSize = 10;
 		presetA(a, brushSize);
-		presetB(b, brushSize);
-		Color color = Color.BLACK;
+		//presetB(b, brushSize);
+		Color color = Color.RED;
 		a.setColor(color);
 		b.setColor(color);
 		
-		int canvasSize = 1000;
+		int canvasSize = 500;
 		PaintCanvas canvas = new PaintCanvas(canvasSize);
 
-		int num_brushes = 200;
+		int num_brushes = 20;
 		Brush[] brushes = new Brush[num_brushes];
 		for(int i = 0; i < num_brushes; i++){
 			brushes[i] = b;
 		}
 		
-		DrawpSystemDisplay dsd = new DrawpSystemDisplay(new SimpleDemo(canvas, brushes));
+		new DrawpSystemDisplay(new SimpleDemo(canvas, brushes));
 		
 	}
 	
@@ -52,7 +52,7 @@ public class DemoMain
 		bs = new BrushShape();
 		int interval = 255 / brushShapeSize;
 		for(int i = 1; i < brushShapeSize; i++)
-			bs.setApplicationPoint(i, i, i * interval);
+			bs.addApplicationPoint(i, i, i * interval);
 		
 		b.setShape(bs);
 	}
