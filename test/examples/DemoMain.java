@@ -29,9 +29,10 @@ public class DemoMain
 		int canvasSize = 500;
 		PaintCanvas canvas = new PaintCanvas(canvasSize);
 
-		int num_brushes = 20;
+		int num_brushes = 10;
 		Brush[] brushes = new Brush[num_brushes];
-		for(int i = 0; i < num_brushes; i++){
+		for(int i = 0; i < num_brushes; i++)
+		{
 			brushes[i] = b;
 		}
 		

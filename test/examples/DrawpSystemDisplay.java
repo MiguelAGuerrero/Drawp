@@ -21,7 +21,7 @@ import particle.ParticleSystem;
 @SuppressWarnings("serial")
 public class DrawpSystemDisplay extends JPanel
 {
-	private static int DEFAULT_FRAMERATE = 30;
+	private static int DEFAULT_FRAMERATE = 60;
 	private static int DEFAULT_UPDATERATE = 1;
 	private DrawpSystem drawp;
 	private Timer loop;

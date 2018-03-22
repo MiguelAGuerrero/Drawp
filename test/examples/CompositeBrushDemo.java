@@ -37,7 +37,8 @@ public class CompositeBrushDemo extends DrawpSystem
 	
 	
 	@Override
-	public BufferedImage getImage(){
+	public BufferedImage getImage()
+	{
 		return this.canvas.getImage();
 	}
 

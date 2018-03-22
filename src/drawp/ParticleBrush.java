@@ -14,7 +14,7 @@ public class ParticleBrush extends Particle implements Applicator
 	//For interpolation when pixel moves beyond just
 	//1 pixel
 	private int[] previousPos = {0, 0};
-	private BresenhamLine bl = new BresenhamLine();
+	private LineInterpolater bl = new LineInterpolater();
 	
 	public ParticleBrush()
 	{
@@ -41,7 +41,11 @@ public class ParticleBrush extends Particle implements Applicator
 		//Interpolate if brush will move beyond just 1 pixel
 		if(magnitude > 1)
 		{
-			bl.interpolate(getPrevX(), getPrevY(), (int) getX(), (int) getY());
+			bl.line(
+					getPrevX(), 
+					getPrevY(), 
+					(int) Math.round(getX()), 
+					(int) Math.round(getY()));
 			
 			for(Point2D p: bl.getPoints())
 			{
@@ -61,7 +65,7 @@ public class ParticleBrush extends Particle implements Applicator
 	
 	public void setLocation(int x, int y)
 	{
-		//This is to make sure that the brushes do not drag along with
+		//This is to make sure that the brushes do not  drag along with
 		//the sudden change in position
 		storePosition(x, y);
 		super.setLocation(x, y);

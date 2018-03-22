@@ -32,7 +32,7 @@ public class MainFrame extends JFrame
 		this.setPreferredSize(new Dimension(width, height));
 	}
 	
-	private void setupContent()
+	private void setupContentPane()
 	{
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
@@ -41,14 +41,15 @@ public class MainFrame extends JFrame
 	
 	private void setupUI()
 	{
-		setupContent();
+		setupContentPane();
+		setupButtonPanel(contentPane);
+	}
+	
+	private void setupButtonPanel(JPanel contentPane) 
+	{
 		JPanel buttonPanel = new JPanel();
-		
-		buttonPanel.add(new JButton("Start"));
-		contentPane.add(buttonPanel, BorderLayout.SOUTH);
-		
+		buttonPanel.add(new JButton("Start"));		
 		buttonPanel.add(new JButton("Stop"));
 		contentPane.add(buttonPanel, BorderLayout.SOUTH);
-
 	}
 }

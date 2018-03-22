@@ -67,7 +67,7 @@ public class SimpleDemo extends DrawpSystem
 			double cosx = Math.cos(angrad);
 			double siny =  Math.sin(angrad);
 			pb.setLocation(cx + radius * cosx, cy + radius * siny);
-			pb.setVelocity(0, 3);
+			pb.setVelocity(0, 2);
 			pb.setAngle(Math.toDegrees(angrad));
 			pb.setAngularAcceleration(0.05);
 		}
