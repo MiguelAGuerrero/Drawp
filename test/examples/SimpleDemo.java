@@ -36,12 +36,12 @@ public class SimpleDemo extends DrawpSystem
 	private void addAttractor()
 	{
 		double radius = 200;
-		double strength = -1;
+		double strength = -2;
 		ForceField a = new ForceField(radius, strength);
 		ForceField b = new ForceField(radius, strength);
 		a.setLocation(canvas.WIDTH / 2, 2 * canvas.HEIGHT / 3 );
 		b.setLocation(canvas.WIDTH / 2, canvas.HEIGHT / 3);
-		b.setVelocity(1, 0);
+		//b.setVelocity(1, 0);
 		system.registerForce(a); 
 		system.registerForce(b);
 	}
@@ -69,7 +69,8 @@ public class SimpleDemo extends DrawpSystem
 			pb.setLocation(cx + radius * cosx, cy + radius * siny);
 			pb.setVelocity(0, 2);
 			pb.setAngle(Math.toDegrees(angrad));
-			pb.setAngularAcceleration(0.05);
+			pb.setAngularVelocity(0.5);
+			pb.getBrush().setColor(i * 10000);
 		}
 	}
 
