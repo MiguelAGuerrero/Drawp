@@ -35,7 +35,7 @@ public class SimpleDemo extends DrawpSystem
 	
 	private void addAttractor()
 	{
-		double radius = 200;
+		double radius = 100;
 		double strength = -2;
 		ForceField a = new ForceField(radius, strength);
 		ForceField b = new ForceField(radius, strength);

@@ -8,6 +8,7 @@ public class ForceField extends Particle implements Force
 	public ForceField(double forceRange, double strength)
 	{
 		this.strength = strength;
+		this.forceRange = forceRange;
 	}
 	
 	@Override

@@ -7,7 +7,7 @@ import paint.Brush;
 import paint.PaintCanvas;
 import particle.ParticleSystem;
 
-public abstract class DrawpSystem implements Runnable
+public class DrawpSystem implements Runnable
 {
 	protected PaintCanvas canvas;
 	protected ArrayList<ParticleBrush> particleBrushes;
@@ -68,7 +68,10 @@ public abstract class DrawpSystem implements Runnable
 	 * Gets the image representing the visual state of the DrawpSystem
 	 * @return
 	 */
-	public abstract BufferedImage getImage();
+	public BufferedImage getImage() 
+	{
+		return this.canvas.getImage();
+	}
 	
 	@Override
 	public void run()

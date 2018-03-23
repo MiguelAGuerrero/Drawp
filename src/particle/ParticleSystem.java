@@ -49,7 +49,7 @@ public class ParticleSystem
 		for(Force f: forces)
 			for(Particle p: particles)
 				f.exert(p);
-	
+		
 		for(Particle p: particles)
 			p.move();
 	}

@@ -15,21 +15,11 @@ public class CompositeBrushDemo extends DrawpSystem
 	public CompositeBrushDemo(PaintCanvas c, Brush[] brushes)
 	{
 		super(c, brushes);
-		CompositeParticleBrush cpb = new CompositeParticleBrush();
-		for(ParticleBrush pb: this.particleBrushes) 
-		{
-			cpb.addBrush(pb);
-		}
+		CompositeParticleBrush cpb = new CompositeParticleBrush(this.particleBrushes.get(0));
 		
+		this.particleBrushes.get(0).setVelocityX(1);
+		this.particleBrushes.add(cpb);
 		this.system.registerParticle(cpb);
-		int i = 0;
-		for(Particle p: this.particleBrushes) 
-		{
-			i++;
-			p.setAngle(i * 10);
-			p.setLocation(250, 250);
-			p.setVelocity(0, 1);
-		}
 		
 		cpb.setVelocity(0, -1);
 		cpb.setLocation(250, 250);

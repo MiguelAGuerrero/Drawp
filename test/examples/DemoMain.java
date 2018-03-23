@@ -29,14 +29,14 @@ public class DemoMain
 		int canvasSize = 500;
 		PaintCanvas canvas = new PaintCanvas(canvasSize);
 
-		int num_brushes = 100;
+		int num_brushes = 10;
 		Brush[] brushes = new Brush[num_brushes];
 		for(int i = 0; i < num_brushes; i++)
 		{
 			brushes[i] = new Brush();
 		}
 		
-		new DrawpSystemDisplay(new SimpleDemo(canvas, brushes));
+		new DrawpSystemDisplay(new CompositeBrushDemo(canvas, brushes));
 		
 	}
 	

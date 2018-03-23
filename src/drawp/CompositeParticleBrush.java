@@ -30,15 +30,18 @@ public class CompositeParticleBrush
 	}
 	
 	@Override
-	public void apply(Pixmap b)
+	public void apply(Pixmap p)
 	{
-		for(ParticleBrush pb: brushes) { pb.apply(b); }
+		this.brushes.forEach((pb) -> 
+		{
+			pb.apply(p);
+		});
 	}
 	
 	public void move()
 	{
 		super.move();
-		
+
 		//Translate particle brushes based on the movement of the 
 		//center brush
 		for(ParticleBrush pb: brushes)
