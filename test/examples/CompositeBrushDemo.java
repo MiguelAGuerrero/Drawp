@@ -7,7 +7,6 @@ import drawp.DrawpSystem;
 import drawp.ParticleBrush;
 import paint.Brush;
 import paint.PaintCanvas;
-import particle.Particle;
 
 public class CompositeBrushDemo extends DrawpSystem
 {
@@ -17,12 +16,17 @@ public class CompositeBrushDemo extends DrawpSystem
 		super(c, brushes);
 		CompositeParticleBrush cpb = new CompositeParticleBrush(this.particleBrushes.get(0));
 		
-		this.particleBrushes.get(0).setVelocityX(1);
+		ParticleBrush example = this.particleBrushes.get(0);
+		example.setVelocityX(1);
+		example.setLocation(250, 250);
+		example.setAngularVelocity(3);
+		
 		this.particleBrushes.add(cpb);
 		this.system.registerParticle(cpb);
 		
-		cpb.setVelocity(0, -1);
+		cpb.setVelocity(0, -0.5);
 		cpb.setLocation(250, 250);
+		cpb.setAngularVelocity(1);
 	}
 	
 	
