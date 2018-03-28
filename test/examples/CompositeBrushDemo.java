@@ -17,7 +17,7 @@ public class CompositeBrushDemo extends DrawpSystem
 		CompositeParticleBrush cpb = new CompositeParticleBrush(this.particleBrushes.get(0));
 		
 		ParticleBrush example = this.particleBrushes.get(0);
-		example.setVelocityX(1);
+		example.setVelocityX(3);
 		example.setLocation(250, 250);
 		example.setAngularVelocity(3);
 		
@@ -26,7 +26,7 @@ public class CompositeBrushDemo extends DrawpSystem
 		
 		cpb.setVelocity(0, -0.5);
 		cpb.setLocation(250, 250);
-		cpb.setAngularVelocity(1);
+		cpb.setAngularVelocity(0.5);
 	}
 	
 	

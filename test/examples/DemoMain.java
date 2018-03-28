@@ -26,17 +26,17 @@ public class DemoMain
 		a.setColor(color);
 		b.setColor(color);
 		
-		int canvasSize = 500;
+		int canvasSize = 1000;
 		PaintCanvas canvas = new PaintCanvas(canvasSize);
 
-		int num_brushes = 10;
+		int num_brushes = 100;
 		Brush[] brushes = new Brush[num_brushes];
 		for(int i = 0; i < num_brushes; i++)
 		{
-			brushes[i] = new Brush();
+			brushes[i] = b;
 		}
 		
-		new DrawpSystemDisplay(new CompositeBrushDemo(canvas, brushes));
+		new DrawpSystemDisplay(new VectorFieldDemo(canvas, brushes));
 		
 	}
 	

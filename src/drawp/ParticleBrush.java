@@ -1,6 +1,7 @@
 package drawp;
 
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 import paint.Applicator;
 import paint.Pixmap;
@@ -11,6 +12,7 @@ public class ParticleBrush extends Particle implements Applicator
 {
 	private Brush brush;
 	private boolean up = false;
+	
 	//For interpolation when pixel moves beyond just
 	//1 pixel
 	private int[] previousPos = {0, 0};
@@ -50,7 +52,7 @@ public class ParticleBrush extends Particle implements Applicator
 	@Override
 	public void setLocation(double x, double y)
 	{
-		//This is to make sure that the brushes do not  drag along with
+		//This is to make sure that the brushes drag along with
 		//the sudden change in position
 		storePosition((int) getX(), (int) getY());
 		super.setLocation(x, y);
